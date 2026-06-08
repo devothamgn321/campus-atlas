@@ -4,7 +4,23 @@
 
 Validate whether students and campus operators experience enough fragmentation in day-to-day university workflows to justify a unified campus operating layer with AI assistance.
 
-This is portfolio-stage discovery, not formal commissioned research. The sample below represents the research plan and early informal discovery structure used to shape the CampusOS case study.
+This is portfolio-stage discovery, not formal commissioned research. The findings below should be read as lightweight validation and product synthesis used to shape the CampusOS case study.
+
+## Research Methodology
+
+| Source | Scope | Purpose |
+|---|---:|---|
+| Informal student conversations | 10 students | Understand recurring campus workflow pain points |
+| Informal faculty / advisor conversations | 3 faculty / advisors | Understand advising visibility and student-support gaps |
+| Administrator-oriented discovery prompts | 3 target administrator profiles | Map likely operational concerns around queues, verification, and AI risk |
+| Secondary research | University portals, student-service pages, campus app patterns, higher-education AI product research | Validate that fragmentation and student-service automation are active category problems |
+
+### Methodology Notes
+
+- This was not a statistically representative study.
+- Frequency signals are directional and intended for product prioritization, not academic research claims.
+- Administrator findings are framed as target-profile synthesis until deeper primary interviews are completed.
+- The discovery goal was to identify MVP risks and product wedge candidates, not prove market demand conclusively.
 
 ## Target Participants
 
@@ -77,4 +93,3 @@ This is portfolio-stage discovery, not formal commissioned research. The sample 
 - AI answer groundedness
 - Escalation precision
 - Admin dashboard weekly active users
-
