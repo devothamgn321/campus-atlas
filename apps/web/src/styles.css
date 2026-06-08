@@ -1,0 +1,983 @@
+:root {
+  color-scheme: light;
+  --ink: #17202a;
+  --muted: #607086;
+  --line: #d9e1ea;
+  --surface: #ffffff;
+  --soft: #f4f7fa;
+  --navy: #12324a;
+  --blue: #2563eb;
+  --cyan: #0891b2;
+  --mint: #0f9f6e;
+  --gold: #b7791f;
+  --coral: #d24d3f;
+  --shadow: 0 12px 34px rgba(18, 50, 74, 0.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--soft);
+  color: var(--ink);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.appShell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 22px;
+  background: #0f2234;
+  color: #f8fbff;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brandLockup,
+.sidebarFooter,
+.profileChip,
+.moduleTopline,
+.healthRow,
+.serviceMain,
+.serviceMeta,
+.panelLabel,
+.studentIdentity,
+.progressBlock div,
+.taskItem,
+.credentialItem,
+.eyebrow,
+.heroActions,
+.topbarActions {
+  display: flex;
+  align-items: center;
+}
+
+.brandLockup {
+  gap: 12px;
+}
+
+.brandMark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #dff7ed;
+  color: #0f6c50;
+}
+
+.brandLockup strong,
+.profileChip strong,
+.sidebarFooter strong {
+  display: block;
+}
+
+.brandLockup span,
+.sidebarFooter span,
+.profileChip small {
+  display: block;
+  color: #aab8c7;
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
+
+.navStack {
+  display: grid;
+  gap: 8px;
+}
+
+.navItem {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #cbd7e4;
+  text-align: left;
+}
+
+.navItem.active {
+  background: #f8fbff;
+  color: #0f2234;
+}
+
+.navItem:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.sidebarFooter {
+  gap: 10px;
+  margin-top: auto;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.statusDot {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #f59e0b;
+}
+
+.statusDot.connected {
+  background: #22c55e;
+}
+
+.statusDot.offline {
+  background: #f97316;
+}
+
+.workspace {
+  min-width: 0;
+  padding: 18px;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0 18px;
+  background: rgba(244, 247, 250, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.searchBox {
+  min-height: 44px;
+  flex: 1 1 420px;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.searchBox input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+}
+
+.topbarActions {
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+
+.iconButton {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--navy);
+}
+
+.profileChip {
+  gap: 10px;
+  min-height: 42px;
+  padding: 6px 10px 6px 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.profileChip > span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #e8f4ff;
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 0.78rem;
+}
+
+.heroPanel,
+.viewSection,
+.scoreCard,
+.moduleCard,
+.studentPanel,
+.copilotPanel,
+.analyticsPanel,
+.roadmapCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.heroPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+  gap: 24px;
+  min-height: 430px;
+  padding: 26px;
+  overflow: hidden;
+}
+
+.heroCopy {
+  max-width: 780px;
+}
+
+.eyebrow {
+  gap: 8px;
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1 {
+  max-width: 850px;
+  margin: 18px 0 16px;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.98;
+}
+
+.heroCopy p,
+.sectionHeader p,
+.moduleCard p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.heroActions {
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.heroActions button,
+.actionTile,
+.promptGrid button {
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.heroActions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.heroActions .secondaryAction {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--navy);
+}
+
+.campusMap {
+  min-height: 360px;
+  padding: 18px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(18, 50, 74, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(18, 50, 74, 0.07) 1px, transparent 1px),
+    #edf5f2;
+  background-size: 34px 34px;
+  border: 1px solid #c9d9d2;
+}
+
+.mapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--navy);
+}
+
+.mapHeader span {
+  color: var(--muted);
+  font-size: 0.83rem;
+  font-weight: 800;
+}
+
+.mapGrid {
+  position: relative;
+  height: 288px;
+}
+
+.mapGrid::before,
+.mapGrid::after {
+  position: absolute;
+  content: "";
+  inset: 54px 52px;
+  border: 2px dashed rgba(18, 50, 74, 0.22);
+  border-radius: 8px;
+}
+
+.mapGrid::after {
+  inset: 100px 104px;
+  border-color: rgba(8, 145, 178, 0.28);
+}
+
+.mapNode {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  min-width: 104px;
+  min-height: 42px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(18, 50, 74, 0.14);
+  background: #ffffff;
+  color: var(--navy);
+  font-size: 0.86rem;
+  font-weight: 900;
+  box-shadow: 0 12px 24px rgba(18, 50, 74, 0.12);
+}
+
+.mapNode.identity {
+  top: 28px;
+  left: 20px;
+}
+
+.mapNode.academics {
+  top: 52px;
+  right: 26px;
+}
+
+.mapNode.services {
+  left: 38%;
+  top: 124px;
+  background: #e8f4ff;
+}
+
+.mapNode.ai {
+  left: 26px;
+  bottom: 36px;
+  background: #eaf8f1;
+}
+
+.mapNode.admin {
+  right: 18px;
+  bottom: 28px;
+  background: #fff4dc;
+}
+
+.scoreGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.scoreCard {
+  padding: 16px;
+}
+
+.scoreCard span,
+.statBox span,
+.progressBlock span,
+.moduleCard dt,
+.serviceMeta small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.scoreCard strong {
+  display: block;
+  margin: 10px 0 4px;
+  font-size: 2rem;
+}
+
+.scoreCard small {
+  color: var(--mint);
+  font-weight: 800;
+}
+
+.viewSection {
+  margin-top: 14px;
+  padding: 22px;
+}
+
+.viewSection.highlighted {
+  border-color: #9fc6ff;
+}
+
+.mutedSection {
+  opacity: 1;
+}
+
+.sectionHeader {
+  max-width: 880px;
+  margin-bottom: 18px;
+}
+
+.sectionHeader span {
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.sectionHeader h2 {
+  margin: 8px 0;
+  font-size: clamp(1.65rem, 3vw, 2.8rem);
+  line-height: 1.05;
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.moduleCard {
+  padding: 18px;
+}
+
+.moduleTopline {
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.moduleIcon,
+.serviceIcon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #e8f4ff;
+  color: var(--blue);
+}
+
+.moduleTopline span,
+.livePill,
+.betaPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 9px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.moduleTopline span {
+  background: #eaf8f1;
+  color: #0f6c50;
+}
+
+.moduleCard h3 {
+  margin: 16px 0 8px;
+  font-size: 1.18rem;
+}
+
+.healthRow {
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.healthTrack,
+.barTrack,
+.progressTrack {
+  height: 8px;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #e7edf3;
+}
+
+.healthTrack div,
+.barTrack div,
+.progressTrack div {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--mint);
+}
+
+.moduleCard dl {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.moduleCard dd {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.moduleCard small {
+  display: block;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.studentGrid,
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+  gap: 14px;
+}
+
+.studentPanel,
+.copilotPanel,
+.analyticsPanel {
+  padding: 18px;
+}
+
+.studentIdentity {
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.studentAvatar {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.studentIdentity h3 {
+  margin: 0 0 4px;
+}
+
+.studentIdentity p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.academicStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.statBox {
+  min-height: 78px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--soft);
+}
+
+.statBox strong {
+  display: block;
+  margin-top: 8px;
+}
+
+.progressBlock {
+  padding: 14px;
+  border-radius: 8px;
+  background: #f6faf7;
+  border: 1px solid #d6eadf;
+}
+
+.progressBlock div {
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.progressTrack {
+  display: block;
+  margin: 10px 0 8px;
+}
+
+.progressBlock small {
+  color: var(--muted);
+}
+
+.taskList,
+.credentialList {
+  margin-top: 16px;
+}
+
+.taskList h4,
+.credentialList h4 {
+  margin: 0 0 10px;
+}
+
+.taskItem,
+.credentialItem {
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.taskItem svg,
+.credentialItem svg {
+  flex: 0 0 auto;
+  color: var(--mint);
+}
+
+.credentialItem span {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.panelLabel {
+  gap: 8px;
+  color: var(--navy);
+  font-weight: 900;
+}
+
+.copilotStatus {
+  margin: 18px 0;
+  padding: 16px;
+  border-radius: 8px;
+  background: #e8f4ff;
+}
+
+.copilotStatus strong {
+  display: block;
+  color: var(--blue);
+  font-size: 2.5rem;
+}
+
+.copilotStatus span {
+  color: var(--muted);
+}
+
+.chatThread {
+  display: grid;
+  gap: 10px;
+}
+
+.chatBubble {
+  max-width: 92%;
+  padding: 12px;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.chatBubble.student {
+  justify-self: end;
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.chatBubble.assistant {
+  background: #f0f7f5;
+  color: var(--ink);
+}
+
+.promptGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.promptGrid button {
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--navy);
+  text-align: left;
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.actionTile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+.actionTile.mint {
+  background: #eaf8f1;
+  color: #0f6c50;
+}
+
+.actionTile.blue {
+  background: #e8f4ff;
+  color: var(--blue);
+}
+
+.actionTile.gold {
+  background: #fff4dc;
+  color: var(--gold);
+}
+
+.actionTile.coral {
+  background: #fff0ee;
+  color: var(--coral);
+}
+
+.serviceTable {
+  display: grid;
+  gap: 10px;
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.serviceMain {
+  gap: 12px;
+  min-width: 0;
+}
+
+.serviceMain h3 {
+  margin: 0 0 4px;
+}
+
+.serviceMain span {
+  color: var(--muted);
+}
+
+.serviceMeta {
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  text-align: right;
+}
+
+.livePill {
+  background: #eaf8f1;
+  color: #0f6c50;
+}
+
+.betaPill {
+  background: #fff4dc;
+  color: var(--gold);
+}
+
+.barStack {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 10px;
+}
+
+.barRow span,
+.barRow strong {
+  font-size: 0.86rem;
+}
+
+.insightList,
+.roadmapCard ul {
+  display: grid;
+  gap: 10px;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.roadmapGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.roadmapCard {
+  padding: 18px;
+}
+
+.roadmapCard > span {
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.roadmapCard h3 {
+  margin: 10px 0;
+}
+
+.roadmapCard > strong {
+  color: var(--mint);
+}
+
+@media (max-width: 1120px) {
+  .appShell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 14px;
+  }
+
+  .navStack {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .sidebarFooter {
+    display: none;
+  }
+
+  .heroPanel,
+  .studentGrid,
+  .analyticsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .scoreGrid,
+  .moduleGrid,
+  .quickActions,
+  .roadmapGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .workspace {
+    padding: 10px;
+  }
+
+  .topbar {
+    position: static;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .searchBox {
+    width: 100%;
+    flex: 0 1 auto;
+  }
+
+  .topbarActions {
+    justify-content: space-between;
+  }
+
+  .profileChip {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .profileChip div {
+    min-width: 0;
+  }
+
+  .profileChip strong,
+  .profileChip small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .navStack,
+  .scoreGrid,
+  .moduleGrid,
+  .quickActions,
+  .roadmapGrid,
+  .academicStats,
+  .promptGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .navItem {
+    justify-content: center;
+  }
+
+  .heroPanel,
+  .viewSection {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 2.45rem;
+  }
+
+  .campusMap {
+    min-height: 300px;
+  }
+
+  .mapGrid {
+    height: 230px;
+  }
+
+  .mapNode {
+    min-width: 92px;
+    font-size: 0.78rem;
+  }
+
+  .serviceRow {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceMeta {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
