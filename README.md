@@ -1,10 +1,12 @@
 # CampusOS
 
-CampusOS is an AI Product Manager portfolio case study for higher education.
-
-It explores how a university could unify student services, digital identity, credentials, admin workflows, and AI assistance into one measurable campus operating layer.
+CampusOS is an AI-native campus operating system case study exploring how universities can unify student services, digital identity, academic workflows, and AI assistance into one measurable product layer.
 
 This is not positioned as a first-of-its-kind startup claim. Higher education already has AI assistants, campus apps, chatbots, and service automation platforms. CampusOS is a focused case study that shows how I would frame the problem, design the AI product, define metrics, manage risk, and plan an MVP.
+
+## Live Demo
+
+[Open the CampusOS prototype](https://devothamgn321.github.io/CampusOS/)
 
 ## What This Demonstrates
 
