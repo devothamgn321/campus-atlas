@@ -453,6 +453,7 @@ h1 {
 }
 
 .viewSection {
+  scroll-margin-top: 86px;
   margin-top: 14px;
   padding: 22px;
 }

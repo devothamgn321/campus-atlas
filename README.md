@@ -24,6 +24,20 @@ This is not positioned as a first-of-its-kind startup claim. Higher education al
 - AI PM operating room with strategy, use cases, experiments, evals, governance, and launch plan
 - Mock API serving the product and AI PM data
 
+## Product Screens
+
+### Command Center
+
+![CampusOS command center](docs/assets/screenshots/command-center.png)
+
+### AI PM Operating Room
+
+![CampusOS AI PM operating room](docs/assets/screenshots/ai-pm-operating-room.png)
+
+### Admin Intelligence
+
+![CampusOS admin intelligence](docs/assets/screenshots/admin-intelligence.png)
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -95,10 +109,12 @@ GET /api/ai-product-strategy
 
 ## Key Docs
 
+- [Customer Discovery](docs/research/Customer-Discovery.md)
 - [AI PM Portfolio Case Study](docs/product/AI-PM-Portfolio-Case-Study.md)
 - [AI Product Strategy](docs/product/AI-Product-Strategy.md)
 - [AI Evaluation Plan](docs/product/AI-Evaluation-Plan.md)
 - [Experiment Backlog](docs/product/Experiment-Backlog.md)
+- [User Journeys](docs/product/User-Journeys.md)
 - [GTM Launch Plan](docs/product/GTM-Launch-Plan.md)
 - [Metrics Framework](docs/product/Metrics.md)
 - [System Architecture](docs/architecture/System-Architecture.md)

@@ -9,9 +9,12 @@ CampusOS needs an AI quality system that helps a university trust answers, verif
 | Metric | Target | Method |
 |---|---:|---|
 | Answer groundedness | >= 92% | Compare response claims against retrieved source passages |
+| Hallucination rate | <= 3% | Human review flags unsupported claims, invented policies, or fabricated dates |
 | Policy refusal accuracy | >= 95% | Test high-risk campus decision prompts |
 | Retrieval hit rate | >= 88% | Known-answer set across campus policies and service FAQs |
+| Retrieval precision@5 | >= 80% | Review whether top retrieved documents are relevant to the user intent |
 | Citation accuracy | >= 90% | Check whether cited documents support the final answer |
+| Response quality | >= 4.2/5 | Rubric review for helpfulness, clarity, actionability, and tone |
 | Escalation classification | >= 85% | Label cases where human staff should handle the request |
 
 ## Online Evaluation
@@ -33,6 +36,52 @@ CampusOS needs an AI quality system that helps a university trust answers, verif
 - Role-based access to student record context
 - Audit trails for credential and advisor workflows
 
+## Guardrail Policy
+
+| Scenario | Expected behavior |
+|---|---|
+| Low retrieval confidence | Ask a clarifying question or route to human staff |
+| No supporting citation | Do not provide a definitive answer |
+| Academic-status decision | Explain process and escalate to advisor or registrar |
+| Financial or payment issue | Provide general navigation only and escalate account-specific cases |
+| Mental-health or emergency language | Show crisis/support guidance and human escalation |
+| Sensitive student record access | Require role-based authorization before retrieval |
+
+## Escalation Logic
+
+```text
+User query
+  |
+  v
+Intent and risk classification
+  |
+  +-- high-impact / sensitive --> human escalation
+  |
+  v
+Retrieve campus sources
+  |
+  +-- weak retrieval confidence --> clarify or escalate
+  |
+  v
+Generate cited answer
+  |
+  +-- missing citation or low confidence --> escalate
+  |
+  v
+Suggest workflow action and collect feedback
+```
+
+## Evaluation Dataset
+
+| Dataset slice | Example coverage |
+|---|---|
+| Registrar FAQs | Certificates, transcripts, enrollment, deadlines |
+| Library workflows | Renewals, fines, due dates, reservations |
+| Dining and payments | Meal orders, refunds, wallet issues |
+| Academic advising | Credits, attendance, course planning |
+| Adversarial prompts | Prompt injection, unsupported policy requests, private-data access |
+| Escalation cases | Financial, disciplinary, emergency, and ambiguous requests |
+
 ## Monitoring Loop
 
 1. Sample prompt, retrieval, and response traces weekly.
@@ -49,4 +98,3 @@ The AI copilot should not graduate from pilot to MVP until it meets:
 - 85% escalation precision
 - 4.3/5 student satisfaction
 - No unresolved critical safety incidents in the pilot window
-
