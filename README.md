@@ -1,8 +1,8 @@
 # CampusOS — AI-Powered Digital Campus Operating System
 
-CampusOS is a state-of-the-art AI Product Manager portfolio project evolved from a final-year smart campus project into a global-ready higher education platform. It is designed for universities that want to unify student identity, academic records, campus services, AI assistance, analytics, and digital credentials into one intelligent operating layer.
+CampusOS is an AI Product Manager portfolio case study evolved from a final-year smart campus project into a product-grade higher education concept. It explores how universities could unify student identity, academic records, campus services, AI assistance, analytics, and digital credentials into one intelligent operating layer.
 
-This is not positioned as a college portal. It is positioned as a product-led platform for modern universities.
+This is not positioned as a claim that no one has built campus AI before. Higher education already has AI assistants, student engagement platforms, campus apps, and service automation tools. CampusOS is my case-study interpretation of the space, built to demonstrate AI PM thinking: problem framing, product strategy, RAG use-case design, evaluation, responsible AI controls, metrics, roadmap, and launch planning.
 
 ## AI Product Manager Showcase
 
@@ -22,7 +22,7 @@ This project is intentionally built to demonstrate AI PM skill, not only fronten
 
 Universities operate through fragmented systems: student portals, learning systems, dining systems, library tools, ID cards, department workflows, career portals, and manual administrative processes. CampusOS brings these workflows into one connected platform.
 
-The long-term vision is to become the digital operating system for higher education institutions.
+The long-term product vision is to become a digital operating layer for higher education institutions. The portfolio goal is to show how an AI PM can move from messy operational problems to a measurable, responsible AI product strategy.
 
 ## Core Product Modules
 
@@ -76,9 +76,20 @@ This repository now includes a working CampusOS 2.0 prototype:
 
 ## Why This Project Exists
 
-The original Student Link project digitized student records, library, canteen, and administrative workflows. CampusOS upgrades that foundation into a globally relevant product with product strategy, user personas, success metrics, roadmap, architecture, and a modern UI.
+The original Student Link project digitized student records, library, canteen, and administrative workflows. CampusOS upgrades that foundation into a modern AI PM case study with product strategy, user personas, success metrics, roadmap, architecture, and a working prototype.
 
-It demonstrates product thinking, engineering management, platform design, and AI-era higher education transformation.
+It demonstrates product thinking, engineering management, platform design, and responsible AI product execution in a higher education context.
+
+## Market Context
+
+CampusOS sits in an active product category. Existing higher-education products already address AI student support, campus engagement, chatbots, LMS workflows, and service automation. The purpose of this repo is not to present CampusOS as a first-of-its-kind invention. The purpose is to show how I would analyze the category and design a differentiated product concept around:
+
+- Campus-specific RAG with answer grounding and citations
+- Closed-loop service workflows, not chatbot-only support
+- Student identity and credential-aware experiences
+- Admin intelligence tied to adoption and operational load
+- AI evaluation gates and responsible AI governance
+- GTM and experiment design for a credible MVP path
 
 ## Target Users
 
@@ -187,7 +198,7 @@ npm run build
 
 ## Portfolio Positioning
 
-CampusOS represents my transition from building a final-year engineering project to thinking like an Engineering Management and Product Management professional. The project now focuses on:
+CampusOS represents my transition from building a final-year engineering project to thinking like an AI Product Manager. The project now focuses on:
 
 - Problem discovery
 - Platform strategy
