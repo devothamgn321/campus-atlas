@@ -13,15 +13,20 @@ import {
   CircleHelp,
   ClipboardList,
   CreditCard,
+  FlaskConical,
   GraduationCap,
   LayoutDashboard,
   Library,
   MessageSquareText,
   MonitorCheck,
+  Radar,
   RefreshCw,
+  Rocket,
+  Scale,
   Search,
   ShieldCheck,
   Sparkles,
+  Target,
   Utensils,
   WalletCards
 } from "lucide-react";
@@ -216,11 +221,136 @@ const fallbackOverview = {
       status: "Next",
       outcomes: ["RAG copilot", "LMS integrations", "Payments", "SSO"]
     }
+  ],
+  aiProductStrategy: {
+    thesis:
+      "CampusOS uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.",
+    targetCustomer: "Mid-market and enterprise universities with fragmented student-service operations.",
+    wedge:
+      "Start with AI self-service for registrar, library, dining, transport, and academic FAQs, then expand into identity, workflow automation, and admin intelligence.",
+    opportunity: {
+      tam: "$18B global higher-education software and services opportunity",
+      sam: "$2.4B campus workflow, student success, and service management segment",
+      som: "$24M reachable ARR across 80 institutions in first expansion market",
+      pricingHypothesis: "$3-6 per active student per month plus implementation and analytics add-ons"
+    },
+    differentiators: [
+      "Campus-specific RAG layer grounded in university policy and service data",
+      "Closed-loop workflows instead of chatbot-only answers",
+      "Credential-aware identity and verification layer",
+      "Admin analytics tied to adoption, resolution quality, and operational load",
+      "Responsible AI controls for accuracy, privacy, escalation, and auditability"
+    ]
+  },
+  aiUseCases: [
+    {
+      name: "RAG Campus Copilot",
+      user: "Student",
+      job: "Resolve academic and service questions without waiting for office staff.",
+      dataSources: ["FAQ docs", "Registrar policies", "Library catalog", "Service tickets"],
+      modelPattern: "Retrieval augmented generation with answer citations and fallback routing",
+      successMetric: "Verified answer resolution rate",
+      risk: "Incorrect policy answer",
+      guardrail: "Citations, confidence threshold, and human handoff for high-impact queries"
+    },
+    {
+      name: "Advisor Signal Engine",
+      user: "Faculty advisor",
+      job: "Identify students who need intervention before academic risk becomes severe.",
+      dataSources: ["Attendance", "Credits", "GPA trend", "Pending tasks"],
+      modelPattern: "Rules-first risk scoring with explainable ML roadmap",
+      successMetric: "Advisor action rate",
+      risk: "Unfair or opaque risk labels",
+      guardrail: "Explainability, opt-out review, and bias monitoring by cohort"
+    },
+    {
+      name: "Credential Verifier",
+      user: "Registrar and external verifier",
+      job: "Verify student records and certificates faster with tamper-evident status.",
+      dataSources: ["Student identity", "Issued documents", "Verifier audit logs"],
+      modelPattern: "Deterministic verification with AI-assisted anomaly review",
+      successMetric: "Median verification time saved",
+      risk: "Credential exposure",
+      guardrail: "Role-based access, signed URLs, expiry windows, and audit trails"
+    }
+  ],
+  experiments: [
+    {
+      name: "Copilot first-contact resolution",
+      hypothesis:
+        "If students receive cited answers plus one-click workflow actions, registrar tickets will drop by 20% in four weeks.",
+      primaryMetric: "Ticket deflection with verified satisfaction",
+      guardrailMetric: "Escalation accuracy",
+      sample: "First-year and final-year students across registrar workflows",
+      decisionRule: "Ship if deflection improves by 15% without lowering CSAT below 4.2/5"
+    },
+    {
+      name: "Credential QR verification",
+      hypothesis:
+        "If certificates include secure QR verification, manual verification turnaround will drop from days to minutes.",
+      primaryMetric: "Median verification completion time",
+      guardrailMetric: "Unauthorized access attempts",
+      sample: "Bonafide and semester-grade certificate requests",
+      decisionRule: "Expand if 80% of checks complete without staff intervention"
+    }
+  ],
+  aiEvaluation: {
+    offlineEval: [
+      { metric: "Answer groundedness", target: ">= 92%", method: "Compare response claims against retrieved source passages" },
+      { metric: "Policy refusal accuracy", target: ">= 95%", method: "Test high-risk campus decision prompts" },
+      { metric: "Retrieval hit rate", target: ">= 88%", method: "Known-answer set across campus policies and service FAQs" }
+    ],
+    onlineEval: [
+      { metric: "Resolved without staff", target: "60%", method: "Student confirms answer or completes workflow" },
+      { metric: "Escalation precision", target: "85%", method: "Staff labels whether handoff was needed" },
+      { metric: "Student satisfaction", target: "4.3/5", method: "Post-resolution micro-survey" }
+    ],
+    monitoring: [
+      "Prompt and retrieval trace sampling",
+      "Low-confidence escalation review",
+      "Cohort-level fairness checks",
+      "Policy drift detection after document updates"
+    ]
+  },
+  governance: [
+    {
+      area: "Privacy",
+      control: "PII minimization, role-based access, audit trails, and retention windows for student records."
+    },
+    {
+      area: "Safety",
+      control: "Confidence thresholds, refusal policies, and escalation for disciplinary, financial, or academic-status decisions."
+    },
+    {
+      area: "Fairness",
+      control: "Cohort-level monitoring before surfacing risk signals to advisors or administrators."
+    }
+  ],
+  launchPlan: [
+    {
+      stage: "Design Partner Pilot",
+      timeline: "0-8 weeks",
+      goal: "Validate registrar and student-service workflows with one university.",
+      proof: "20% fewer manual tickets, 4.3/5 student satisfaction, weekly admin usage"
+    },
+    {
+      stage: "Campus MVP",
+      timeline: "2-4 months",
+      goal: "Expand to identity, library, dining, and transport workflows.",
+      proof: "Six live workflows, credential verification MVP, 60% copilot resolution"
+    },
+    {
+      stage: "Platform Expansion",
+      timeline: "4-9 months",
+      goal: "Add LMS, SSO, payments, career matching, and analytics exports.",
+      proof: "Multi-department adoption, repeatable onboarding, paid expansion path"
+    }
   ]
 };
 
 const navItems = [
   { id: "command", label: "Command", icon: MonitorCheck },
+  { id: "ai-pm", label: "AI PM", icon: Target },
   { id: "student", label: "Student", icon: GraduationCap },
   { id: "services", label: "Services", icon: Building2 },
   { id: "admin", label: "Admin", icon: BarChart3 },
@@ -388,6 +518,9 @@ function App() {
               <button className="secondaryAction" onClick={() => setActiveView("admin")} type="button">
                 View Admin Intelligence
               </button>
+              <button className="secondaryAction" onClick={() => setActiveView("ai-pm")} type="button">
+                See AI PM Strategy
+              </button>
             </div>
           </div>
 
@@ -402,6 +535,7 @@ function App() {
               <span className="mapNode services">Services</span>
               <span className="mapNode ai">Copilot</span>
               <span className="mapNode admin">Admin</span>
+              <span className="mapNode pm">AI PM</span>
             </div>
           </div>
         </section>
@@ -426,6 +560,115 @@ function App() {
             {filteredModules.map((module) => (
               <ModuleCard key={module.id} module={module} />
             ))}
+          </div>
+        </section>
+
+        <section className={activeView === "ai-pm" ? "viewSection highlighted" : "viewSection"} id="ai-pm">
+          <SectionHeader
+            eyebrow="AI Product Manager Showcase"
+            title="Strategy, AI architecture, experiments, evals, and launch"
+            copy="This layer demonstrates product judgment: where AI belongs, how quality is measured, what risks are controlled, and how the product reaches market."
+          />
+
+          <div className="strategyGrid">
+            <article className="strategyHero">
+              <div className="panelLabel">
+                <Target size={18} />
+                Product thesis
+              </div>
+              <h3>{overview.aiProductStrategy.thesis}</h3>
+              <p>{overview.aiProductStrategy.wedge}</p>
+              <div className="strategyMeta">
+                <span>Target customer</span>
+                <strong>{overview.aiProductStrategy.targetCustomer}</strong>
+              </div>
+            </article>
+
+            <div className="opportunityStack">
+              {Object.entries(overview.aiProductStrategy.opportunity).map(([key, value]) => (
+                <article className="opportunityCard" key={key}>
+                  <span>{key.replace(/([A-Z])/g, " $1")}</span>
+                  <strong>{value}</strong>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="pmArtifactGrid">
+            <article className="artifactPanel">
+              <div className="panelLabel">
+                <Brain size={18} />
+                AI use-case canvas
+              </div>
+              <div className="useCaseStack">
+                {overview.aiUseCases.map((useCase) => (
+                  <UseCaseCard key={useCase.name} useCase={useCase} />
+                ))}
+              </div>
+            </article>
+
+            <article className="artifactPanel">
+              <div className="panelLabel">
+                <FlaskConical size={18} />
+                Experiment backlog
+              </div>
+              <div className="experimentStack">
+                {overview.experiments.map((experiment) => (
+                  <ExperimentCard key={experiment.name} experiment={experiment} />
+                ))}
+              </div>
+            </article>
+          </div>
+
+          <div className="pmArtifactGrid">
+            <article className="artifactPanel">
+              <div className="panelLabel">
+                <Radar size={18} />
+                AI evaluation system
+              </div>
+              <EvalTable title="Offline quality gates" rows={overview.aiEvaluation.offlineEval} />
+              <EvalTable title="Online product gates" rows={overview.aiEvaluation.onlineEval} />
+            </article>
+
+            <article className="artifactPanel">
+              <div className="panelLabel">
+                <Scale size={18} />
+                Responsible AI controls
+              </div>
+              <div className="governanceGrid">
+                {overview.governance.map((item) => (
+                  <div className="governanceCard" key={item.area}>
+                    <strong>{item.area}</strong>
+                    <p>{item.control}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="monitoringBox">
+                <strong>Monitoring loop</strong>
+                <ul>
+                  {overview.aiEvaluation.monitoring.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          </div>
+
+          <div className="launchStrip">
+            <div className="panelLabel">
+              <Rocket size={18} />
+              GTM and launch plan
+            </div>
+            <div className="launchGrid">
+              {overview.launchPlan.map((stage) => (
+                <article className="launchCard" key={stage.stage}>
+                  <span>{stage.timeline}</span>
+                  <h3>{stage.stage}</h3>
+                  <p>{stage.goal}</p>
+                  <strong>{stage.proof}</strong>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -687,6 +930,71 @@ function ServiceRow({ service }) {
         <small>{service.volume.toLocaleString()} monthly uses</small>
       </div>
     </article>
+  );
+}
+
+function UseCaseCard({ useCase }) {
+  return (
+    <article className="useCaseCard">
+      <div>
+        <span>{useCase.user}</span>
+        <h3>{useCase.name}</h3>
+      </div>
+      <p>{useCase.job}</p>
+      <dl>
+        <div>
+          <dt>Model pattern</dt>
+          <dd>{useCase.modelPattern}</dd>
+        </div>
+        <div>
+          <dt>Success metric</dt>
+          <dd>{useCase.successMetric}</dd>
+        </div>
+        <div>
+          <dt>Primary risk</dt>
+          <dd>{useCase.risk}</dd>
+        </div>
+        <div>
+          <dt>Guardrail</dt>
+          <dd>{useCase.guardrail}</dd>
+        </div>
+      </dl>
+      <div className="sourceTags">
+        {useCase.dataSources.map((source) => (
+          <span key={source}>{source}</span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
+function ExperimentCard({ experiment }) {
+  return (
+    <article className="experimentCard">
+      <h3>{experiment.name}</h3>
+      <p>{experiment.hypothesis}</p>
+      <div className="experimentFacts">
+        <Stat label="Primary" value={experiment.primaryMetric} />
+        <Stat label="Guardrail" value={experiment.guardrailMetric} />
+        <Stat label="Sample" value={experiment.sample} />
+        <Stat label="Decision" value={experiment.decisionRule} />
+      </div>
+    </article>
+  );
+}
+
+function EvalTable({ title, rows }) {
+  return (
+    <div className="evalTable">
+      <h3>{title}</h3>
+      {rows.map((row) => (
+        <div className="evalRow" key={row.metric}>
+          <strong>{row.metric}</strong>
+          <span>{row.target}</span>
+          <p>{row.method}</p>
+        </div>
+      ))}
+    </div>
   );
 }
 

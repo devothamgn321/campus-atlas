@@ -1,8 +1,22 @@
 # CampusOS — AI-Powered Digital Campus Operating System
 
-CampusOS is a state-of-the-art product concept evolved from a final-year smart campus project into a global-ready higher education platform. It is designed for universities that want to unify student identity, academic records, campus services, AI assistance, analytics, and digital credentials into one intelligent operating layer.
+CampusOS is a state-of-the-art AI Product Manager portfolio project evolved from a final-year smart campus project into a global-ready higher education platform. It is designed for universities that want to unify student identity, academic records, campus services, AI assistance, analytics, and digital credentials into one intelligent operating layer.
 
 This is not positioned as a college portal. It is positioned as a product-led platform for modern universities.
+
+## AI Product Manager Showcase
+
+This project is intentionally built to demonstrate AI PM skill, not only frontend implementation. It includes:
+
+- AI product thesis and strategic wedge
+- Customer segmentation and opportunity sizing
+- RAG-based campus copilot use-case design
+- AI evaluation plan with offline and online quality gates
+- Responsible AI governance for privacy, safety, fairness, and reliability
+- Experiment backlog with hypotheses, primary metrics, guardrails, samples, and decision rules
+- GTM and launch sequencing from design partner pilot to platform expansion
+- Admin analytics and KPI thinking tied to product outcomes
+- Working React + Express prototype that visualizes the product strategy
 
 ## Product Vision
 
@@ -53,10 +67,11 @@ This repository now includes a working CampusOS 2.0 prototype:
 
 - Student command center with profile, academic progress, priority tasks, and verified credentials
 - Campus Copilot preview with suggested prompts and sample assistant workflow
+- AI PM operating room with strategy, opportunity sizing, use-case canvas, experiments, evals, governance, and launch plan
 - Campus services hub for library, dining, registrar, and transport workflows
 - Admin intelligence dashboard with adoption, workflow, and health metrics
 - Product module registry with owners, maturity, KPIs, health scores, and next milestones
-- Mock Express API serving platform overview, modules, metrics, services, student profile, copilot data, and roadmap
+- Mock Express API serving platform overview, modules, metrics, services, student profile, copilot data, roadmap, and AI PM artifacts
 - Product, architecture, roadmap, metrics, personas, and portfolio positioning documents
 
 ## Why This Project Exists
@@ -161,6 +176,7 @@ GET /api/services
 GET /api/student-profile
 GET /api/copilot
 GET /api/roadmap
+GET /api/ai-product-strategy
 ```
 
 ### Production Build
@@ -178,9 +194,23 @@ CampusOS represents my transition from building a final-year engineering project
 - User personas
 - Product architecture
 - AI-enabled workflows
+- AI evaluation and responsible AI controls
+- Experiment design and product decision rules
 - Higher education operations
 - Metrics and roadmap thinking
+- GTM and launch planning
 - Global scalability
+
+## Key Portfolio Documents
+
+- [AI PM Portfolio Case Study](docs/product/AI-PM-Portfolio-Case-Study.md)
+- [AI Product Strategy](docs/product/AI-Product-Strategy.md)
+- [AI Evaluation Plan](docs/product/AI-Evaluation-Plan.md)
+- [Experiment Backlog](docs/product/Experiment-Backlog.md)
+- [GTM Launch Plan](docs/product/GTM-Launch-Plan.md)
+- [PRD](docs/product/PRD.md)
+- [Metrics Framework](docs/product/Metrics.md)
+- [System Architecture](docs/architecture/System-Architecture.md)
 
 ## Status
 

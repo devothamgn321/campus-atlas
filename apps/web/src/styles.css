@@ -413,6 +413,13 @@ h1 {
   background: #fff4dc;
 }
 
+.mapNode.pm {
+  left: 39%;
+  bottom: 18px;
+  background: #f1edff;
+  color: #5b3aa4;
+}
+
 .scoreGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -566,7 +573,9 @@ h1 {
 }
 
 .studentGrid,
-.analyticsGrid {
+.analyticsGrid,
+.strategyGrid,
+.pmArtifactGrid {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
   gap: 14px;
@@ -574,8 +583,204 @@ h1 {
 
 .studentPanel,
 .copilotPanel,
-.analyticsPanel {
+.analyticsPanel,
+.strategyHero,
+.opportunityCard,
+.artifactPanel,
+.launchStrip {
   padding: 18px;
+}
+
+.strategyHero,
+.opportunityCard,
+.artifactPanel,
+.launchStrip,
+.useCaseCard,
+.experimentCard,
+.governanceCard,
+.launchCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.strategyHero h3 {
+  margin: 16px 0 10px;
+  font-size: clamp(1.45rem, 3vw, 2.35rem);
+  line-height: 1.1;
+}
+
+.strategyHero p,
+.useCaseCard p,
+.experimentCard p,
+.governanceCard p,
+.launchCard p,
+.monitoringBox,
+.evalRow p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.strategyMeta {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f1edff;
+}
+
+.strategyMeta span,
+.opportunityCard span,
+.useCaseCard > div > span,
+.launchCard span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.strategyMeta strong {
+  display: block;
+  margin-top: 6px;
+}
+
+.opportunityStack,
+.useCaseStack,
+.experimentStack,
+.governanceGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.opportunityCard {
+  min-height: 90px;
+  padding: 14px;
+}
+
+.opportunityCard strong {
+  display: block;
+  margin-top: 8px;
+  line-height: 1.35;
+}
+
+.pmArtifactGrid {
+  margin-top: 14px;
+}
+
+.artifactPanel {
+  background: var(--surface);
+}
+
+.artifactPanel .panelLabel {
+  margin-bottom: 14px;
+}
+
+.useCaseCard,
+.experimentCard,
+.governanceCard,
+.launchCard {
+  padding: 14px;
+}
+
+.useCaseCard h3,
+.experimentCard h3,
+.launchCard h3 {
+  margin: 6px 0 8px;
+}
+
+.useCaseCard dl {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.useCaseCard dt {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.useCaseCard dd {
+  margin: 4px 0 0;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.sourceTags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sourceTags span {
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: #e8f4ff;
+  color: var(--blue);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.experimentFacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.evalTable + .evalTable {
+  margin-top: 18px;
+}
+
+.evalTable h3 {
+  margin: 0 0 10px;
+}
+
+.evalRow {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.8fr) 90px minmax(0, 1.2fr);
+  gap: 10px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+
+.evalRow span {
+  color: var(--mint);
+  font-weight: 900;
+}
+
+.evalRow p {
+  margin: 0;
+}
+
+.monitoringBox {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f6faf7;
+}
+
+.monitoringBox ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.launchStrip {
+  margin-top: 14px;
+}
+
+.launchGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.launchCard strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--navy);
+  line-height: 1.45;
 }
 
 .studentIdentity {
@@ -879,7 +1084,7 @@ h1 {
   }
 
   .navStack {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .sidebarFooter {
@@ -888,14 +1093,17 @@ h1 {
 
   .heroPanel,
   .studentGrid,
-  .analyticsGrid {
+  .analyticsGrid,
+  .strategyGrid,
+  .pmArtifactGrid {
     grid-template-columns: 1fr;
   }
 
   .scoreGrid,
   .moduleGrid,
   .quickActions,
-  .roadmapGrid {
+  .roadmapGrid,
+  .launchGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -941,8 +1149,10 @@ h1 {
   .moduleGrid,
   .quickActions,
   .roadmapGrid,
+  .launchGrid,
   .academicStats,
-  .promptGrid {
+  .promptGrid,
+  .experimentFacts {
     grid-template-columns: 1fr;
   }
 
@@ -973,6 +1183,10 @@ h1 {
   }
 
   .serviceRow {
+    grid-template-columns: 1fr;
+  }
+
+  .evalRow {
     grid-template-columns: 1fr;
   }
 

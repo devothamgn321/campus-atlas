@@ -1,53 +1,117 @@
-# CampusOS Roadmap
+# CampusOS Product Roadmap
 
-## Phase 0 — Repositioning
+## Roadmap Philosophy
 
-- Rename project from FYP23 / Student Link to CampusOS
-- Rewrite README
-- Add product docs
-- Add architecture docs
-- Add roadmap
-- Remove academic-only positioning
+CampusOS prioritizes proof over feature volume. Each phase should create evidence that the platform reduces campus friction, improves student outcomes, and makes AI safe enough for university operations.
 
-## Phase 1 — Portfolio MVP
+## Phase 1: AI PM Portfolio Prototype
 
-- Build polished landing page
-- Add module cards
-- Add mock API
-- Add metrics framework
-- Add admin dashboard mockup
-- Add product screenshots
+Status: Complete
 
-## Phase 2 — Functional MVP
+Scope:
 
-- Add authentication
-- Add real student profile data model
-- Add service workflow forms
-- Add library and dining workflows
-- Add admin dashboard
-- Add PostgreSQL
+- Working React dashboard
+- Express mock API
+- Student command center
+- Services hub
+- Admin intelligence dashboard
+- AI PM operating room
+- Product, AI strategy, architecture, metrics, experiment, and GTM docs
 
-## Phase 3 — AI Layer
+Evidence:
 
-- Add AI campus copilot
-- Add campus knowledge-base ingestion
-- Add RAG pipeline
-- Add escalation to human department
-- Track AI helpfulness
+- Build passes with `npm run check`
+- API exposes platform and AI PM artifacts
+- Browser verification confirms dashboard rendering
 
-## Phase 4 — Enterprise-Ready Platform
+## Phase 2: Operational MVP
 
-- LMS/SIS integrations
-- Digital credentials
-- Role-based dashboards
+Status: Next build phase
+
+Scope:
+
+- Authentication and role-based access
+- Real data model for students, services, credentials, and tickets
+- Workflow forms for registrar, library, dining, and transport
+- Admin queue management
+- Credential verifier MVP
+
+Success metrics:
+
+- 70% workflow completion
+- 20% reduction in manual tickets
+- 80% credential checks completed without staff intervention
+
+Risks:
+
+- University data model complexity
+- Role and permission edge cases
+- Staff adoption if dashboards do not match real operating rhythms
+
+## Phase 3: AI Copilot Pilot
+
+Status: AI validation phase
+
+Scope:
+
+- Campus knowledge ingestion
+- Retrieval augmented generation
+- Cited answers
+- Escalation rules
+- Prompt and retrieval tracing
+- Offline evaluation set
+- Human review workflow
+
+Launch gates:
+
+- 92% groundedness
+- 88% retrieval hit rate
+- 85% escalation precision
+- 4.3/5 student satisfaction
+
+Risks:
+
+- Hallucinated policy answers
+- Stale campus documents
+- Over-automation of high-impact academic decisions
+
+## Phase 4: Enterprise Platform
+
+Status: Expansion phase
+
+Scope:
+
+- SIS and LMS integrations
+- SSO
+- Payment workflows
 - Analytics warehouse
-- Cloud deployment
-- Security hardening
+- Department benchmarking
+- Mobile experience
+- Advanced credential verification
 
-## Phase 5 — Go-To-Market Story
+Success metrics:
 
-- Higher education product deck
-- Demo video
-- Case study from original Student Link
-- Product teardown and learnings
-- Resume and LinkedIn portfolio integration
+- Multi-department weekly adoption
+- Repeatable onboarding playbook
+- Paid expansion into analytics and identity modules
+
+## Phase 5: GTM And Case Study
+
+Status: Portfolio and commercialization phase
+
+Scope:
+
+- Design partner narrative
+- Product demo video
+- PM case study
+- Before/after operational metrics
+- AI safety review summary
+- Stakeholder pitch deck
+
+Buyer proof:
+
+- Student-service cost reduction
+- Faster document verification
+- Measurable student satisfaction lift
+- Responsible AI operating model
+

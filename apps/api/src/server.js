@@ -198,6 +198,150 @@ const roadmap = [
   }
 ];
 
+const aiProductStrategy = {
+  thesis:
+    "CampusOS uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.",
+  targetCustomer: "Mid-market and enterprise universities with fragmented student-service operations.",
+  wedge:
+    "Start with AI self-service for registrar, library, dining, transport, and academic FAQs, then expand into identity, workflow automation, and admin intelligence.",
+  opportunity: {
+    tam: "$18B global higher-education software and services opportunity",
+    sam: "$2.4B campus workflow, student success, and service management segment",
+    som: "$24M reachable ARR across 80 institutions in first expansion market",
+    pricingHypothesis: "$3-6 per active student per month plus implementation and analytics add-ons"
+  },
+  differentiators: [
+    "Campus-specific RAG layer grounded in university policy and service data",
+    "Closed-loop workflows instead of chatbot-only answers",
+    "Credential-aware identity and verification layer",
+    "Admin analytics tied to adoption, resolution quality, and operational load",
+    "Responsible AI controls for accuracy, privacy, escalation, and auditability"
+  ]
+};
+
+const aiUseCases = [
+  {
+    name: "RAG Campus Copilot",
+    user: "Student",
+    job: "Resolve academic and service questions without waiting for office staff.",
+    dataSources: ["FAQ docs", "Registrar policies", "Library catalog", "Service tickets"],
+    modelPattern: "Retrieval augmented generation with answer citations and fallback routing",
+    successMetric: "Verified answer resolution rate",
+    risk: "Incorrect policy answer",
+    guardrail: "Citations, confidence threshold, and human handoff for high-impact queries"
+  },
+  {
+    name: "Advisor Signal Engine",
+    user: "Faculty advisor",
+    job: "Identify students who need intervention before academic risk becomes severe.",
+    dataSources: ["Attendance", "Credits", "GPA trend", "Pending tasks"],
+    modelPattern: "Rules-first risk scoring with explainable ML roadmap",
+    successMetric: "Advisor action rate",
+    risk: "Unfair or opaque risk labels",
+    guardrail: "Explainability, opt-out review, and bias monitoring by cohort"
+  },
+  {
+    name: "Credential Verifier",
+    user: "Registrar and external verifier",
+    job: "Verify student records and certificates faster with tamper-evident status.",
+    dataSources: ["Student identity", "Issued documents", "Verifier audit logs"],
+    modelPattern: "Deterministic verification with AI-assisted anomaly review",
+    successMetric: "Median verification time saved",
+    risk: "Credential exposure",
+    guardrail: "Role-based access, signed URLs, expiry windows, and audit trails"
+  }
+];
+
+const experiments = [
+  {
+    name: "Copilot first-contact resolution",
+    hypothesis:
+      "If students receive cited answers plus one-click workflow actions, registrar tickets will drop by 20% in four weeks.",
+    primaryMetric: "Ticket deflection with verified satisfaction",
+    guardrailMetric: "Escalation accuracy",
+    sample: "First-year and final-year students across registrar workflows",
+    decisionRule: "Ship if deflection improves by 15% without lowering CSAT below 4.2/5"
+  },
+  {
+    name: "Credential QR verification",
+    hypothesis:
+      "If certificates include secure QR verification, manual verification turnaround will drop from days to minutes.",
+    primaryMetric: "Median verification completion time",
+    guardrailMetric: "Unauthorized access attempts",
+    sample: "Bonafide and semester-grade certificate requests",
+    decisionRule: "Expand if 80% of checks complete without staff intervention"
+  },
+  {
+    name: "Admin adoption dashboard",
+    hypothesis:
+      "If leaders see workflow bottlenecks by department, weekly admin engagement will increase and backlog aging will decline.",
+    primaryMetric: "Weekly dashboard-active admins",
+    guardrailMetric: "False-positive bottleneck alerts",
+    sample: "Registrar, library, dining, and transport teams",
+    decisionRule: "Prioritize if two teams change staffing or process based on insights"
+  }
+];
+
+const aiEvaluation = {
+  offlineEval: [
+    { metric: "Answer groundedness", target: ">= 92%", method: "Compare response claims against retrieved source passages" },
+    { metric: "Policy refusal accuracy", target: ">= 95%", method: "Test high-risk finance, medical, legal, and disciplinary prompts" },
+    { metric: "Retrieval hit rate", target: ">= 88%", method: "Known-answer set across campus policies and service FAQs" }
+  ],
+  onlineEval: [
+    { metric: "Resolved without staff", target: "60%", method: "Student confirms answer or completes workflow" },
+    { metric: "Escalation precision", target: "85%", method: "Staff labels whether handoff was needed" },
+    { metric: "Student satisfaction", target: "4.3/5", method: "Post-resolution micro-survey" }
+  ],
+  monitoring: [
+    "Prompt and retrieval trace sampling",
+    "Low-confidence escalation review",
+    "Cohort-level fairness checks",
+    "Policy drift detection after document updates",
+    "Weekly quality review with support and registrar teams"
+  ]
+};
+
+const governance = [
+  {
+    area: "Privacy",
+    control: "PII minimization, role-based access, audit trails, and retention windows for student records."
+  },
+  {
+    area: "Safety",
+    control: "Confidence thresholds, refusal policies, and escalation for disciplinary, financial, or academic-status decisions."
+  },
+  {
+    area: "Fairness",
+    control: "Cohort-level monitoring before surfacing risk signals to advisors or administrators."
+  },
+  {
+    area: "Reliability",
+    control: "Cited answers, source freshness checks, fallback search, and human review queues."
+  }
+];
+
+const launchPlan = [
+  {
+    stage: "Design Partner Pilot",
+    timeline: "0-8 weeks",
+    goal: "Validate registrar and student-service workflows with one university.",
+    proof: "20% fewer manual tickets, 4.3/5 student satisfaction, weekly admin usage"
+  },
+  {
+    stage: "Campus MVP",
+    timeline: "2-4 months",
+    goal: "Expand to identity, library, dining, and transport workflows.",
+    proof: "Six live workflows, credential verification MVP, 60% copilot resolution"
+  },
+  {
+    stage: "Platform Expansion",
+    timeline: "4-9 months",
+    goal: "Add LMS, SSO, payments, career matching, and analytics exports.",
+    proof: "Multi-department adoption, repeatable onboarding, paid expansion path"
+  }
+];
+
 app.get("/", (request, response) => {
   response.json({
     name: "CampusOS API",
@@ -214,7 +358,13 @@ app.get("/api/overview", (request, response) => {
     services,
     studentProfile,
     copilot,
-    roadmap
+    roadmap,
+    aiProductStrategy,
+    aiUseCases,
+    experiments,
+    aiEvaluation,
+    governance,
+    launchPlan
   });
 });
 
@@ -240,6 +390,17 @@ app.get("/api/copilot", (request, response) => {
 
 app.get("/api/roadmap", (request, response) => {
   response.json({ roadmap });
+});
+
+app.get("/api/ai-product-strategy", (request, response) => {
+  response.json({
+    aiProductStrategy,
+    aiUseCases,
+    experiments,
+    aiEvaluation,
+    governance,
+    launchPlan
+  });
 });
 
 app.listen(port, () => {
