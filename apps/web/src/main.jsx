@@ -470,7 +470,7 @@ function App() {
           <span className={`statusDot ${apiStatus}`} />
           <div>
             <strong>{apiStatus === "connected" ? "API connected" : "Demo data active"}</strong>
-            <span>localhost:4000</span>
+            <span>{apiStatus === "connected" ? "Local API" : "Hosted portfolio demo"}</span>
           </div>
         </div>
       </aside>
