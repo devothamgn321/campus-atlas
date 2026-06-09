@@ -32,8 +32,8 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
-const API_URL =
-  ["localhost", "127.0.0.1"].includes(window.location.hostname) ? "http://localhost:4000/api/overview" : null;
+const isLocalHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const API_URL = isLocalHost ? `${window.location.protocol}//${window.location.hostname}:4000/api/overview` : null;
 
 const iconMap = {
   "ai-campus-copilot": Brain,
