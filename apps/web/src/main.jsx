@@ -32,7 +32,8 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
-const API_URL = "http://localhost:4000/api/overview";
+const API_URL =
+  ["localhost", "127.0.0.1"].includes(window.location.hostname) ? "http://localhost:4000/api/overview" : null;
 
 const iconMap = {
   "ai-campus-copilot": Brain,
@@ -379,6 +380,11 @@ function useOverview() {
     let cancelled = false;
 
     async function loadOverview() {
+      if (!API_URL) {
+        setApiStatus("offline");
+        return;
+      }
+
       try {
         const response = await fetch(API_URL);
 
