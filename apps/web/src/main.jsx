@@ -498,181 +498,188 @@ function App() {
           </div>
         </header>
 
-        <section className="heroPanel" id="command">
-          <div className="heroCopy">
-            <div className="eyebrow">
-              <Sparkles size={16} />
-              AI-powered smart campus OS
-            </div>
-            <h1>Run student identity, academics, services, and campus intelligence in one place.</h1>
-            <p>
-              CampusOS converts a final-year smart campus idea into a product-grade operating system
-              for universities, with student workflows, service operations, admin analytics, and a
-              future-ready AI copilot layer.
-            </p>
-            <div className="heroActions">
-              <button onClick={() => setActiveView("student")} type="button">
-                Open Student Command Center
-                <ChevronRight size={17} />
-              </button>
-              <button className="secondaryAction" onClick={() => setActiveView("admin")} type="button">
-                View Admin Intelligence
-              </button>
-              <button className="secondaryAction" onClick={() => setActiveView("ai-pm")} type="button">
-                See AI PM Strategy
-              </button>
-            </div>
-          </div>
-
-          <div className="campusMap" aria-label="CampusOS workflow map">
-            <div className="mapHeader">
-              <span>Live Workflow Map</span>
-              <strong>CampusOS 2.0</strong>
-            </div>
-            <div className="mapGrid">
-              <span className="mapNode identity">Identity</span>
-              <span className="mapNode academics">Academics</span>
-              <span className="mapNode services">Services</span>
-              <span className="mapNode ai">Copilot</span>
-              <span className="mapNode admin">Admin</span>
-              <span className="mapNode pm">AI PM</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="scoreGrid" aria-label="CampusOS scorecards">
-          {overview.metrics.scorecards.map((metric) => (
-            <article className="scoreCard" key={metric.label}>
-              <span>{metric.label}</span>
-              <strong>{metric.value}</strong>
-              <small>{metric.trend} vs last month</small>
-            </article>
-          ))}
-        </section>
-
-        <section className={activeView === "command" ? "viewSection" : "viewSection mutedSection"}>
-          <SectionHeader
-            eyebrow="Platform Modules"
-            title="Six connected product layers"
-            copy="Each module has a clear owner, KPI, maturity state, and next build milestone."
-          />
-          <div className="moduleGrid">
-            {filteredModules.map((module) => (
-              <ModuleCard key={module.id} module={module} />
-            ))}
-          </div>
-        </section>
-
-        <section className={activeView === "ai-pm" ? "viewSection highlighted" : "viewSection"} id="ai-pm">
-          <SectionHeader
-            eyebrow="AI Product Manager Showcase"
-            title="Strategy, AI architecture, experiments, evals, and launch"
-            copy="This layer demonstrates product judgment: where AI belongs, how quality is measured, what risks are controlled, and how the product reaches market."
-          />
-
-          <div className="strategyGrid">
-            <article className="strategyHero">
-              <div className="panelLabel">
-                <Target size={18} />
-                Product thesis
+        {activeView === "command" && (
+          <>
+            <section className="heroPanel" id="command">
+              <div className="heroCopy">
+                <div className="eyebrow">
+                  <Sparkles size={16} />
+                  AI-powered smart campus OS
+                </div>
+                <h1>Run student identity, academics, services, and campus intelligence in one place.</h1>
+                <p>
+                  CampusOS converts a final-year smart campus idea into a product-grade operating system
+                  for universities, with student workflows, service operations, admin analytics, and a
+                  future-ready AI copilot layer.
+                </p>
+                <div className="heroActions">
+                  <button onClick={() => setActiveView("student")} type="button">
+                    Open Student Command Center
+                    <ChevronRight size={17} />
+                  </button>
+                  <button className="secondaryAction" onClick={() => setActiveView("admin")} type="button">
+                    View Admin Intelligence
+                  </button>
+                  <button className="secondaryAction" onClick={() => setActiveView("ai-pm")} type="button">
+                    See AI PM Strategy
+                  </button>
+                </div>
               </div>
-              <h3>{overview.aiProductStrategy.thesis}</h3>
-              <p>{overview.aiProductStrategy.wedge}</p>
-              <div className="strategyMeta">
-                <span>Target customer</span>
-                <strong>{overview.aiProductStrategy.targetCustomer}</strong>
-              </div>
-            </article>
 
-            <div className="opportunityStack">
-              {Object.entries(overview.aiProductStrategy.opportunity).map(([key, value]) => (
-                <article className="opportunityCard" key={key}>
-                  <span>{key.replace(/([A-Z])/g, " $1")}</span>
-                  <strong>{value}</strong>
+              <div className="campusMap" aria-label="CampusOS workflow map">
+                <div className="mapHeader">
+                  <span>Live Workflow Map</span>
+                  <strong>CampusOS 2.0</strong>
+                </div>
+                <div className="mapGrid">
+                  <span className="mapNode identity">Identity</span>
+                  <span className="mapNode academics">Academics</span>
+                  <span className="mapNode services">Services</span>
+                  <span className="mapNode ai">Copilot</span>
+                  <span className="mapNode admin">Admin</span>
+                  <span className="mapNode pm">AI PM</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="scoreGrid" aria-label="CampusOS scorecards">
+              {overview.metrics.scorecards.map((metric) => (
+                <article className="scoreCard" key={metric.label}>
+                  <span>{metric.label}</span>
+                  <strong>{metric.value}</strong>
+                  <small>{metric.trend} vs last month</small>
                 </article>
               ))}
+            </section>
+
+            <section className="viewSection">
+              <SectionHeader
+                eyebrow="Platform Modules"
+                title="Six connected product layers"
+                copy="Each module has a clear owner, KPI, maturity state, and next build milestone."
+              />
+              <div className="moduleGrid">
+                {filteredModules.map((module) => (
+                  <ModuleCard key={module.id} module={module} />
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+
+        {activeView === "ai-pm" && (
+          <section className="viewSection highlighted" id="ai-pm">
+            <SectionHeader
+              eyebrow="AI Product Manager Showcase"
+              title="Strategy, AI architecture, experiments, evals, and launch"
+              copy="This layer demonstrates product judgment: where AI belongs, how quality is measured, what risks are controlled, and how the product reaches market."
+            />
+
+            <div className="strategyGrid">
+              <article className="strategyHero">
+                <div className="panelLabel">
+                  <Target size={18} />
+                  Product thesis
+                </div>
+                <h3>{overview.aiProductStrategy.thesis}</h3>
+                <p>{overview.aiProductStrategy.wedge}</p>
+                <div className="strategyMeta">
+                  <span>Target customer</span>
+                  <strong>{overview.aiProductStrategy.targetCustomer}</strong>
+                </div>
+              </article>
+
+              <div className="opportunityStack">
+                {Object.entries(overview.aiProductStrategy.opportunity).map(([key, value]) => (
+                  <article className="opportunityCard" key={key}>
+                    <span>{key.replace(/([A-Z])/g, " $1")}</span>
+                    <strong>{value}</strong>
+                  </article>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className="pmArtifactGrid">
-            <article className="artifactPanel">
-              <div className="panelLabel">
-                <Brain size={18} />
-                AI use-case canvas
-              </div>
-              <div className="useCaseStack">
-                {overview.aiUseCases.map((useCase) => (
-                  <UseCaseCard key={useCase.name} useCase={useCase} />
-                ))}
-              </div>
-            </article>
-
-            <article className="artifactPanel">
-              <div className="panelLabel">
-                <FlaskConical size={18} />
-                Experiment backlog
-              </div>
-              <div className="experimentStack">
-                {overview.experiments.map((experiment) => (
-                  <ExperimentCard key={experiment.name} experiment={experiment} />
-                ))}
-              </div>
-            </article>
-          </div>
-
-          <div className="pmArtifactGrid">
-            <article className="artifactPanel">
-              <div className="panelLabel">
-                <Radar size={18} />
-                AI evaluation system
-              </div>
-              <EvalTable title="Offline quality gates" rows={overview.aiEvaluation.offlineEval} />
-              <EvalTable title="Online product gates" rows={overview.aiEvaluation.onlineEval} />
-            </article>
-
-            <article className="artifactPanel">
-              <div className="panelLabel">
-                <Scale size={18} />
-                Responsible AI controls
-              </div>
-              <div className="governanceGrid">
-                {overview.governance.map((item) => (
-                  <div className="governanceCard" key={item.area}>
-                    <strong>{item.area}</strong>
-                    <p>{item.control}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="monitoringBox">
-                <strong>Monitoring loop</strong>
-                <ul>
-                  {overview.aiEvaluation.monitoring.map((item) => (
-                    <li key={item}>{item}</li>
+            <div className="pmArtifactGrid">
+              <article className="artifactPanel">
+                <div className="panelLabel">
+                  <Brain size={18} />
+                  AI use-case canvas
+                </div>
+                <div className="useCaseStack">
+                  {overview.aiUseCases.map((useCase) => (
+                    <UseCaseCard key={useCase.name} useCase={useCase} />
                   ))}
-                </ul>
+                </div>
+              </article>
+
+              <article className="artifactPanel">
+                <div className="panelLabel">
+                  <FlaskConical size={18} />
+                  Experiment backlog
+                </div>
+                <div className="experimentStack">
+                  {overview.experiments.map((experiment) => (
+                    <ExperimentCard key={experiment.name} experiment={experiment} />
+                  ))}
+                </div>
+              </article>
+            </div>
+
+            <div className="pmArtifactGrid">
+              <article className="artifactPanel">
+                <div className="panelLabel">
+                  <Radar size={18} />
+                  AI evaluation system
+                </div>
+                <EvalTable title="Offline quality gates" rows={overview.aiEvaluation.offlineEval} />
+                <EvalTable title="Online product gates" rows={overview.aiEvaluation.onlineEval} />
+              </article>
+
+              <article className="artifactPanel">
+                <div className="panelLabel">
+                  <Scale size={18} />
+                  Responsible AI controls
+                </div>
+                <div className="governanceGrid">
+                  {overview.governance.map((item) => (
+                    <div className="governanceCard" key={item.area}>
+                      <strong>{item.area}</strong>
+                      <p>{item.control}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="monitoringBox">
+                  <strong>Monitoring loop</strong>
+                  <ul>
+                    {overview.aiEvaluation.monitoring.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </div>
+
+            <div className="launchStrip">
+              <div className="panelLabel">
+                <Rocket size={18} />
+                GTM and launch plan
               </div>
-            </article>
-          </div>
-
-          <div className="launchStrip">
-            <div className="panelLabel">
-              <Rocket size={18} />
-              GTM and launch plan
+              <div className="launchGrid">
+                {overview.launchPlan.map((stage) => (
+                  <article className="launchCard" key={stage.stage}>
+                    <span>{stage.timeline}</span>
+                    <h3>{stage.stage}</h3>
+                    <p>{stage.goal}</p>
+                    <strong>{stage.proof}</strong>
+                  </article>
+                ))}
+              </div>
             </div>
-            <div className="launchGrid">
-              {overview.launchPlan.map((stage) => (
-                <article className="launchCard" key={stage.stage}>
-                  <span>{stage.timeline}</span>
-                  <h3>{stage.stage}</h3>
-                  <p>{stage.goal}</p>
-                  <strong>{stage.proof}</strong>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        <section className={activeView === "student" ? "viewSection highlighted" : "viewSection"} id="student">
+        {activeView === "student" && (
+          <section className="viewSection highlighted" id="student">
           <SectionHeader
             eyebrow="Student Command Center"
             title="Identity, progress, tasks, and credentials"
@@ -683,8 +690,10 @@ function App() {
             <CopilotPanel copilot={overview.copilot} />
           </div>
         </section>
+        )}
 
-        <section className={activeView === "services" ? "viewSection highlighted" : "viewSection"} id="services">
+        {activeView === "services" && (
+          <section className="viewSection highlighted" id="services">
           <SectionHeader
             eyebrow="Campus Services Hub"
             title="Operational workflows students can complete"
@@ -707,8 +716,10 @@ function App() {
             ))}
           </div>
         </section>
+        )}
 
-        <section className={activeView === "admin" ? "viewSection highlighted" : "viewSection"} id="admin">
+        {activeView === "admin" && (
+          <section className="viewSection highlighted" id="admin">
           <SectionHeader
             eyebrow="Admin Intelligence"
             title="Adoption and workflow health"
@@ -746,8 +757,10 @@ function App() {
             </div>
           </div>
         </section>
+        )}
 
-        <section className={activeView === "roadmap" ? "viewSection highlighted" : "viewSection"} id="roadmap">
+        {activeView === "roadmap" && (
+          <section className="viewSection highlighted" id="roadmap">
           <SectionHeader
             eyebrow="Execution Roadmap"
             title="From portfolio prototype to scalable platform"
@@ -768,6 +781,7 @@ function App() {
             ))}
           </div>
         </section>
+        )}
       </section>
     </main>
   );
