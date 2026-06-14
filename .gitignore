@@ -30,3 +30,6 @@ output/
 .DS_Store
 .vscode/
 .idea/
+
+# Local scratch (old skeleton files, not part of canonical project)
+.old-leftovers/
