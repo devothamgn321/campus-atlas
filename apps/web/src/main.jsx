@@ -1,10 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
+  AlertTriangle,
   BadgeCheck,
   BarChart3,
   Bell,
+  BookOpen,
   BookOpenCheck,
+  Bot,
   Brain,
   BriefcaseBusiness,
   Building2,
@@ -24,9 +27,11 @@ import {
   Rocket,
   Scale,
   Search,
+  Send,
   ShieldCheck,
   Sparkles,
   Target,
+  User,
   Utensils,
   WalletCards
 } from "lucide-react";
@@ -354,9 +359,83 @@ const navItems = [
   { id: "ai-pm", label: "AI PM", icon: Target },
   { id: "student", label: "Student", icon: GraduationCap },
   { id: "services", label: "Services", icon: Building2 },
+  { id: "copilot-demo", label: "Copilot Demo", icon: MessageSquareText },
   { id: "admin", label: "Admin", icon: BarChart3 },
   { id: "roadmap", label: "Roadmap", icon: ClipboardList }
 ];
+
+// Canned knowledge base for the interactive Copilot demo. This is a scripted
+// stand-in for the RAG + guardrails design in docs/architecture/System-Architecture.md:
+// confident answers carry a source citation, low-confidence answers are
+// visibly escalated to a human department with a generated ticket id.
+const COPILOT_RESPONSES = [
+  {
+    keywords: ["library", "fine", "fines", "overdue"],
+    answer:
+      "You can view and pay library fines under My Account -> Fines & Fees. Overdue items accrue $0.25/day, capped at $15 per item.",
+    source: "Library Services Knowledge Base",
+    confidence: 96
+  },
+  {
+    keywords: ["financial aid", "disburse", "disbursement", "aid"],
+    answer:
+      "Financial aid for the Fall term disburses 10 days before classes start, as long as all verification documents are submitted by August 1.",
+    source: "Registrar Academic Calendar",
+    confidence: 94
+  },
+  {
+    keywords: ["student id", "id card", "replace", "lost id"],
+    answer:
+      "Replacement student IDs are issued at Campus ID Services (Student Union, Room 102) for a $15 fee. Bring a government-issued photo ID.",
+    source: "Campus ID Services Guide",
+    confidence: 91
+  },
+  {
+    keywords: ["drop", "add/drop", "deadline", "withdraw"],
+    answer:
+      "Late add/drop requests after the published deadline require instructor and department approval, and the policy varies by course and college.",
+    source: null,
+    confidence: 58,
+    escalateTo: "Registrar's Office - Academic Petitions"
+  }
+];
+
+const COPILOT_FALLBACK_RESPONSE = {
+  answer:
+    "I don't have verified campus information on that yet. I've routed this to a team member who can help.",
+  source: null,
+  confidence: 42,
+  escalateTo: "General Student Services"
+};
+
+const COPILOT_SUGGESTED_PROMPTS = [
+  "How do I check my library fines?",
+  "When does financial aid disburse this semester?",
+  "I missed the add/drop deadline - what are my options?",
+  "Where do I replace a lost student ID?"
+];
+
+function matchCopilotResponse(query) {
+  const normalized = query.toLowerCase();
+  const hit = COPILOT_RESPONSES.find((entry) =>
+    entry.keywords.some((keyword) => normalized.includes(keyword))
+  );
+  return hit ?? COPILOT_FALLBACK_RESPONSE;
+}
+
+function copilotTicketId() {
+  return `CMP-${Math.floor(1000 + Math.random() * 9000)}`;
+}
+
+// Maturity stages map to a 4-step delivery pipeline so non-technical
+// reviewers can scan module progress at a glance.
+const MATURITY_STAGE = {
+  Roadmap: 1,
+  Concept: 2,
+  Prototype: 3,
+  MVP: 4,
+  Live: 4
+};
 
 const quickActions = [
   { label: "Verify credential", icon: BadgeCheck, tone: "mint" },
@@ -522,6 +601,9 @@ function App() {
                   <button onClick={() => setActiveView("student")} type="button">
                     Open Student Command Center
                     <ChevronRight size={17} />
+                  </button>
+                  <button className="secondaryAction" onClick={() => setActiveView("copilot-demo")} type="button">
+                    Try the AI Copilot Demo
                   </button>
                   <button className="secondaryAction" onClick={() => setActiveView("admin")} type="button">
                     View Admin Intelligence
@@ -724,6 +806,17 @@ function App() {
         </section>
         )}
 
+        {activeView === "copilot-demo" && (
+          <section className="viewSection highlighted" id="copilot-demo">
+            <SectionHeader
+              eyebrow="AI Campus Copilot - Interactive Demo"
+              title="See the Copilot's UX contract in action"
+              copy="A scripted demo, not a connected LLM - it shows the product decisions that matter for a campus AI assistant: source citations on confident answers, and visible escalation to a human department when confidence is low."
+            />
+            <CopilotDemo />
+          </section>
+        )}
+
         {activeView === "admin" && (
           <section className="viewSection highlighted" id="admin">
           <SectionHeader
@@ -762,6 +855,8 @@ function App() {
               </ul>
             </div>
           </div>
+
+          <MaturityPipeline modules={overview.modules} northStar={overview.metrics.northStarMetric} />
         </section>
         )}
 
@@ -950,6 +1045,154 @@ function ServiceRow({ service }) {
         <small>{service.volume.toLocaleString()} monthly uses</small>
       </div>
     </article>
+  );
+}
+
+function MaturityPipeline({ modules, northStar }) {
+  return (
+    <div className="analyticsPanel maturityPanel fullSpan">
+      <div className="panelLabel">
+        <ClipboardList size={18} />
+        Module maturity pipeline
+      </div>
+      {northStar && (
+        <div className="northStar">
+          <Target size={18} />
+          <div>
+            <span className="northStarLabel">North Star Metric</span>
+            <strong>{northStar}</strong>
+          </div>
+        </div>
+      )}
+      <div className="dashboardGrid">
+        {modules.map((module) => {
+          const stage = MATURITY_STAGE[module.maturity] ?? 1;
+          return (
+            <article className="dashboardCard" key={module.id}>
+              <div className="dashboardCardHeader">
+                <h3>{module.name}</h3>
+                <span className={`maturityPill maturity-${module.maturity.toLowerCase()}`}>
+                  {module.maturity}
+                </span>
+              </div>
+              <p className="dashboardOwner">Owner: {module.owner}</p>
+              <div className="progressTrack">
+                <div style={{ width: `${(stage / 4) * 100}%` }} />
+              </div>
+              <p className="dashboardKpi">KPI: {module.kpi}</p>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function CopilotDemo() {
+  const [messages, setMessages] = useState([
+    {
+      role: "assistant",
+      answer:
+        "Hi, I'm the CampusOS Copilot demo. Ask about library fines, financial aid, IDs, or course drops - or try your own question to see how I handle uncertainty.",
+      source: null,
+      confidence: null
+    }
+  ]);
+  const [input, setInput] = useState("");
+  const [isThinking, setIsThinking] = useState(false);
+  const scrollRef = useRef(null);
+
+  function ask(query) {
+    const trimmed = query.trim();
+    if (!trimmed || isThinking) return;
+
+    setMessages((prev) => [...prev, { role: "user", answer: trimmed }]);
+    setInput("");
+    setIsThinking(true);
+
+    window.setTimeout(() => {
+      const match = matchCopilotResponse(trimmed);
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          answer: match.answer,
+          source: match.source,
+          confidence: match.confidence,
+          escalateTo: match.escalateTo,
+          ticket: match.escalateTo ? copilotTicketId() : null
+        }
+      ]);
+      setIsThinking(false);
+      window.requestAnimationFrame(() => {
+        scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+      });
+    }, 600);
+  }
+
+  return (
+    <div className="copilotShell">
+      <div className="copilotThread" ref={scrollRef}>
+        {messages.map((message, index) => (
+          <div className={`bubbleRow ${message.role}`} key={index}>
+            <div className="avatar">
+              {message.role === "assistant" ? <Bot size={16} /> : <User size={16} />}
+            </div>
+            <div className="bubble">
+              <p>{message.answer}</p>
+              {message.source && (
+                <span className="citationChip">
+                  <BookOpen size={12} /> Source: {message.source}
+                </span>
+              )}
+              {message.escalateTo && (
+                <span className="escalationChip">
+                  <AlertTriangle size={12} /> {message.confidence}% confidence - escalated to{" "}
+                  {message.escalateTo} ({message.ticket})
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+        {isThinking && (
+          <div className="bubbleRow assistant">
+            <div className="avatar">
+              <Bot size={16} />
+            </div>
+            <div className="bubble thinking">
+              <Sparkles size={14} /> Thinking...
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="suggestedPrompts">
+        {COPILOT_SUGGESTED_PROMPTS.map((prompt) => (
+          <button key={prompt} type="button" onClick={() => ask(prompt)} disabled={isThinking}>
+            {prompt}
+          </button>
+        ))}
+      </div>
+
+      <form
+        className="copilotInput"
+        onSubmit={(event) => {
+          event.preventDefault();
+          ask(input);
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Ask about a campus service, deadline, or policy..."
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+          disabled={isThinking}
+        />
+        <button type="submit" disabled={isThinking || !input.trim()} aria-label="Send">
+          <Send size={16} />
+        </button>
+      </form>
+    </div>
   );
 }
 
