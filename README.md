@@ -40,6 +40,10 @@ This is not positioned as a first-of-its-kind startup claim. Higher education al
 
 ![CampusOS admin intelligence](docs/assets/screenshots/admin-intelligence.png)
 
+### Copilot Demo
+
+![CampusOS copilot demo](docs/assets/screenshots/copilot-demo.png)
+
 ## Tech Stack
 
 | Layer | Technology |
