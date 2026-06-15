@@ -1,8 +1,8 @@
-# Product Requirements Document — CampusOS
+# Product Requirements Document — Campus Atlas
 
 ## 1. Summary
 
-CampusOS is an AI-native campus operating system case study exploring how universities can unify student services, digital identity, academic workflows, and AI assistance into one measurable product layer.
+Campus Atlas is an AI-native campus operating system case study exploring how universities can unify student services, digital identity, academic workflows, and AI assistance into one measurable product layer.
 
 The MVP focuses on high-frequency student workflows: finding campus resources, understanding academic status, completing service requests, accessing credentials, and giving administrators visibility into adoption and support load.
 
@@ -59,7 +59,7 @@ When AI is introduced into campus workflows, I want clear access controls, audit
 - Replace official university systems of record in the prototype.
 - Make production academic, financial, disciplinary, or eligibility decisions with AI.
 - Build a real payment system, SIS integration, LMS integration, or identity provider in the current version.
-- Claim that CampusOS is a first-of-its-kind product category.
+- Claim that Campus Atlas is a first-of-its-kind product category.
 - Store real student data.
 
 ## 7. MVP Scope

@@ -14,7 +14,7 @@ flowchart LR
 
 ### Journey Notes
 
-| Stage | User need | CampusOS response |
+| Stage | User need | Campus Atlas response |
 |---|---|---|
 | Discovery | Find the right service or resource | Campus Copilot and searchable service hub |
 | Digital identity | Access profile, ID, documents, and credentials | Student command center |
@@ -37,7 +37,7 @@ flowchart LR
 
 ### Journey Notes
 
-| Stage | Admin need | CampusOS response |
+| Stage | Admin need | Campus Atlas response |
 |---|---|---|
 | Service request | Understand incoming student demand | Workflow and service volume tracking |
 | Queue visibility | See bottlenecks by department | Admin intelligence dashboard |

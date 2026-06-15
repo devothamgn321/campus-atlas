@@ -149,7 +149,7 @@ const studentProfile = {
     "Renew library book before Friday"
   ],
   credentials: [
-    { name: "Digital Student ID", status: "Verified", issuer: "CampusOS Identity" },
+    { name: "Digital Student ID", status: "Verified", issuer: "Campus Atlas Identity" },
     { name: "Semester Grade Report", status: "Issued", issuer: "Registrar" },
     { name: "Bonafide Certificate", status: "Ready", issuer: "Academic Office" }
   ]
@@ -200,7 +200,7 @@ const roadmap = [
 
 const aiProductStrategy = {
   thesis:
-    "CampusOS uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.",
+    "Campus Atlas uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.",
   targetCustomer: "Mid-market and enterprise universities with fragmented student-service operations.",
   wedge:
     "Start with AI self-service for registrar, library, dining, transport, and academic FAQs, then expand into identity, workflow automation, and admin intelligence.",
@@ -344,7 +344,7 @@ const launchPlan = [
 
 app.get("/", (request, response) => {
   response.json({
-    name: "CampusOS API",
+    name: "Campus Atlas API",
     description: "Mock platform API for an AI-powered digital campus operating system.",
     status: "running",
     version: "2.0.0"
@@ -404,5 +404,5 @@ app.get("/api/ai-product-strategy", (request, response) => {
 });
 
 app.listen(port, () => {
-  console.log(`CampusOS API running on http://localhost:${port}`);
+  console.log(`Campus Atlas API running on http://localhost:${port}`);
 });

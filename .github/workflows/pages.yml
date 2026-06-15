@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Build web app
-        run: GITHUB_PAGES=true npm run build -w campus-os-web
+        run: GITHUB_PAGES=true npm run build -w campus-atlas-web
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

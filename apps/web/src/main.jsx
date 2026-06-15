@@ -15,6 +15,7 @@ import {
   ChevronRight,
   CircleHelp,
   ClipboardList,
+  Compass,
   CreditCard,
   FlaskConical,
   GraduationCap,
@@ -28,7 +29,6 @@ import {
   Scale,
   Search,
   Send,
-  ShieldCheck,
   Sparkles,
   Target,
   User,
@@ -182,7 +182,7 @@ const fallbackOverview = {
       "Renew library book before Friday"
     ],
     credentials: [
-      { name: "Digital Student ID", status: "Verified", issuer: "CampusOS Identity" },
+      { name: "Digital Student ID", status: "Verified", issuer: "Campus Atlas Identity" },
       { name: "Semester Grade Report", status: "Issued", issuer: "Registrar" },
       { name: "Bonafide Certificate", status: "Ready", issuer: "Academic Office" }
     ]
@@ -230,7 +230,7 @@ const fallbackOverview = {
   ],
   aiProductStrategy: {
     thesis:
-      "CampusOS uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.",
+      "Campus Atlas uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.",
     targetCustomer: "Mid-market and enterprise universities with fragmented student-service operations.",
     wedge:
       "Start with AI self-service for registrar, library, dining, transport, and academic FAQs, then expand into identity, workflow automation, and admin intelligence.",
@@ -517,13 +517,13 @@ function App() {
 
   return (
     <main className="appShell">
-      <aside className="sidebar" aria-label="CampusOS navigation">
+      <aside className="sidebar" aria-label="Campus Atlas navigation">
         <div className="brandLockup">
           <div className="brandMark">
-            <ShieldCheck size={24} />
+            <Compass size={24} />
           </div>
           <div>
-            <strong>CampusOS</strong>
+            <strong>Campus Atlas</strong>
             <span>Campus operating layer</span>
           </div>
         </div>
@@ -593,7 +593,7 @@ function App() {
                 </div>
                 <h1>Run student identity, academics, services, and campus intelligence in one place.</h1>
                 <p>
-                  CampusOS converts a final-year smart campus idea into a product-grade operating system
+                  Campus Atlas converts a final-year smart campus idea into a product-grade operating system
                   for universities, with student workflows, service operations, admin analytics, and a
                   future-ready AI copilot layer.
                 </p>
@@ -614,10 +614,10 @@ function App() {
                 </div>
               </div>
 
-              <div className="campusMap" aria-label="CampusOS workflow map">
+              <div className="campusMap" aria-label="Campus Atlas workflow map">
                 <div className="mapHeader">
                   <span>Live Workflow Map</span>
-                  <strong>CampusOS 2.0</strong>
+                  <strong>Campus Atlas 2.0</strong>
                 </div>
                 <div className="mapGrid">
                   <span className="mapNode identity">Identity</span>
@@ -630,7 +630,7 @@ function App() {
               </div>
             </section>
 
-            <section className="scoreGrid" aria-label="CampusOS scorecards">
+            <section className="scoreGrid" aria-label="Campus Atlas scorecards">
               {overview.metrics.scorecards.map((metric) => (
                 <article className="scoreCard" key={metric.label}>
                   <span>{metric.label}</span>
@@ -1093,7 +1093,7 @@ function CopilotDemo() {
     {
       role: "assistant",
       answer:
-        "Hi, I'm the CampusOS Copilot demo. Ask about library fines, financial aid, IDs, or course drops - or try your own question to see how I handle uncertainty.",
+        "Hi, I'm the Campus Atlas Copilot demo. Ask about library fines, financial aid, IDs, or course drops - or try your own question to see how I handle uncertainty.",
       source: null,
       confidence: null
     }

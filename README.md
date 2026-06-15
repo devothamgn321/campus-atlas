@@ -1,12 +1,12 @@
-# CampusOS
+# Campus Atlas
 
-CampusOS is an AI-native campus operating system case study exploring how universities can unify student services, digital identity, academic workflows, and AI assistance into one measurable product layer.
+Campus Atlas is an AI-native campus operating system case study exploring how universities can unify student services, digital identity, academic workflows, and AI assistance into one measurable product layer.
 
-This is not positioned as a first-of-its-kind startup claim. Higher education already has AI assistants, campus apps, chatbots, and service automation platforms. CampusOS is a focused case study that shows how I would frame the problem, design the AI product, define metrics, manage risk, and plan an MVP.
+This is not positioned as a first-of-its-kind startup claim. Higher education already has AI assistants, campus apps, chatbots, and service automation platforms. Campus Atlas is a focused case study that shows how I would frame the problem, design the AI product, define metrics, manage risk, and plan an MVP.
 
 ## Live Demo
 
-[Open the CampusOS prototype](https://devothamgn321.github.io/CampusOS/)
+[Open the Campus Atlas prototype](https://devothamgn321.github.io/campus-atlas/)
 
 ## What This Demonstrates
 
@@ -30,19 +30,19 @@ This is not positioned as a first-of-its-kind startup claim. Higher education al
 
 ### Command Center
 
-![CampusOS command center](docs/assets/screenshots/command-center.png)
+![Campus Atlas command center](docs/assets/screenshots/command-center.png)
 
 ### AI PM Operating Room
 
-![CampusOS AI PM operating room](docs/assets/screenshots/ai-pm-operating-room.png)
+![Campus Atlas AI PM operating room](docs/assets/screenshots/ai-pm-operating-room.png)
 
 ### Admin Intelligence
 
-![CampusOS admin intelligence](docs/assets/screenshots/admin-intelligence.png)
+![Campus Atlas admin intelligence](docs/assets/screenshots/admin-intelligence.png)
 
 ### Copilot Demo
 
-![CampusOS copilot demo](docs/assets/screenshots/copilot-demo.png)
+![Campus Atlas copilot demo](docs/assets/screenshots/copilot-demo.png)
 
 ## Tech Stack
 
@@ -56,7 +56,7 @@ This is not positioned as a first-of-its-kind startup claim. Higher education al
 ## Project Structure
 
 ```text
-CampusOS/
+campus-atlas/
 ├── apps/
 │   ├── web/        # React prototype
 │   └── api/        # Express mock API

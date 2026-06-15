@@ -1,4 +1,4 @@
-# CampusOS Metrics Framework
+# Campus Atlas Metrics Framework
 
 ## North Star Metric
 

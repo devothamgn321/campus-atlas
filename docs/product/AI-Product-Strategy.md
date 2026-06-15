@@ -1,12 +1,12 @@
-# CampusOS AI Product Strategy
+# Campus Atlas AI Product Strategy
 
 ## PM Positioning
 
-CampusOS is framed as an AI Product Manager case study: identify a fragmented campus operations problem, choose the right AI wedge, define measurable outcomes, design the system safely, and launch through a credible GTM path.
+Campus Atlas is framed as an AI Product Manager case study: identify a fragmented campus operations problem, choose the right AI wedge, define measurable outcomes, design the system safely, and launch through a credible GTM path.
 
 ## Product Thesis
 
-CampusOS uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.
+Campus Atlas uses AI where it compresses high-volume student uncertainty into trusted, measurable campus outcomes.
 
 The product does not treat AI as a decorative chatbot. AI is used to:
 

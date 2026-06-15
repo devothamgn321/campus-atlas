@@ -1,8 +1,8 @@
-# CampusOS Product Roadmap
+# Campus Atlas Product Roadmap
 
 ## Roadmap Philosophy
 
-CampusOS prioritizes proof over feature volume. Each phase should create evidence that the platform reduces campus friction, improves student outcomes, and makes AI safe enough for university operations.
+Campus Atlas prioritizes proof over feature volume. Each phase should create evidence that the platform reduces campus friction, improves student outcomes, and makes AI safe enough for university operations.
 
 ## Phase 1: AI PM Portfolio Prototype
 

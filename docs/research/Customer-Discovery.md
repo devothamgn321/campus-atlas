@@ -4,7 +4,7 @@
 
 Validate whether students and campus operators experience enough fragmentation in day-to-day university workflows to justify a unified campus operating layer with AI assistance.
 
-This is portfolio-stage discovery, not formal commissioned research. The findings below should be read as lightweight validation and product synthesis used to shape the CampusOS case study.
+This is portfolio-stage discovery, not formal commissioned research. The findings below should be read as lightweight validation and product synthesis used to shape the Campus Atlas case study.
 
 ## Research Methodology
 

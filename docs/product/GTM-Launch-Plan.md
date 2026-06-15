@@ -28,7 +28,7 @@ Registrar and student-service support are the best first wedge because they comb
 
 ## Buyer Narrative
 
-CampusOS helps universities reduce student-service friction, modernize campus workflows, and introduce AI in a responsible, measurable way.
+Campus Atlas helps universities reduce student-service friction, modernize campus workflows, and introduce AI in a responsible, measurable way.
 
 ## Sales Motion
 

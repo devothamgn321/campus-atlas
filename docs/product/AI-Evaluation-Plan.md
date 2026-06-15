@@ -2,7 +2,7 @@
 
 ## Objective
 
-CampusOS needs an AI quality system that helps a university trust answers, verify workflows, and understand when human staff must take over.
+Campus Atlas needs an AI quality system that helps a university trust answers, verify workflows, and understand when human staff must take over.
 
 ## Offline Evaluation
 

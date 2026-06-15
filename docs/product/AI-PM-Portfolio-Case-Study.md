@@ -2,11 +2,11 @@
 
 ## Role
 
-AI Product Manager for CampusOS, an AI-powered digital campus operating system for higher education.
+AI Product Manager for Campus Atlas, an AI-powered digital campus operating system for higher education.
 
 ## Category Context
 
-CampusOS is a portfolio case study in an active market category. Higher education already has AI assistants, campus engagement platforms, chatbots, LMS integrations, and student-service automation products.
+Campus Atlas is a portfolio case study in an active market category. Higher education already has AI assistants, campus engagement platforms, chatbots, LMS integrations, and student-service automation products.
 
 The project is not positioned as a first-of-its-kind invention. It is positioned as a demonstration of AI PM judgment: how to analyze an existing category, define a wedge, design differentiated workflows, evaluate AI quality, manage risks, and communicate a credible MVP path.
 
@@ -48,4 +48,4 @@ The differentiation is not "AI for campus" by itself. The differentiation is the
 
 ## Interview Narrative
 
-CampusOS shows how I would take an ambiguous AI opportunity and convert it into a product strategy, measurable MVP, safe AI system, and credible launch plan. The project balances user empathy, business outcomes, technical architecture, and responsible AI execution.
+Campus Atlas shows how I would take an ambiguous AI opportunity and convert it into a product strategy, measurable MVP, safe AI system, and credible launch plan. The project balances user empathy, business outcomes, technical architecture, and responsible AI execution.

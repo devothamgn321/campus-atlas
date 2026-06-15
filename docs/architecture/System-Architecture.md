@@ -1,4 +1,4 @@
-# CampusOS System Architecture
+# Campus Atlas System Architecture
 
 ## Current Prototype
 
@@ -15,7 +15,7 @@ The current prototype contains:
 Student / Faculty / Admin
         |
         v
-CampusOS Web + Mobile App
+Campus Atlas Web + Mobile App
         |
         v
 API Gateway

@@ -1,4 +1,4 @@
-# User Personas — CampusOS
+# User Personas — Campus Atlas
 
 ## Persona 1: International Graduate Student
 
@@ -14,7 +14,7 @@ Pain Points:
 - Manual paperwork
 - Unclear campus processes
 
-CampusOS Value:
+Campus Atlas Value:
 - One interface for campus workflows
 - AI copilot for guidance
 - Digital identity and record access
@@ -33,7 +33,7 @@ Pain Points:
 - Limited analytics
 - Repeated student queries
 
-CampusOS Value:
+Campus Atlas Value:
 - Admin dashboard
 - Workflow visibility
 - Centralized service layer
@@ -52,7 +52,7 @@ Pain Points:
 - Manual advising preparation
 - Hard to identify students needing support
 
-CampusOS Value:
+Campus Atlas Value:
 - Academic intelligence
 - Degree planning concept
 - Student progress view
@@ -71,7 +71,7 @@ Pain Points:
 - Security and privacy concerns
 - High integration cost
 
-CampusOS Value:
+Campus Atlas Value:
 - Modular architecture
 - API-first roadmap
 - Role-based access
