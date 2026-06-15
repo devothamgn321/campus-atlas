@@ -33,3 +33,4 @@ output/
 
 # Local scratch (old skeleton files, not part of canonical project)
 .old-leftovers/
+.old-dist-*/
