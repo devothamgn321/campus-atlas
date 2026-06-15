@@ -13,7 +13,7 @@ This is not positioned as a first-of-its-kind startup claim. Higher education al
 - AI product strategy and customer wedge
 - RAG-based campus copilot concept
 - Student service workflow design
-- AI evaluation and responsible AI guardrails
+- AI evaluation and responsible AI guardrails, backed by a runnable eval harness (not just a plan)
 - KPI, experiment, roadmap, and GTM thinking
 - Working React + Express prototype
 
@@ -62,8 +62,10 @@ campus-atlas/
 │   └── api/        # Express mock API
 ├── docs/
 │   ├── product/    # PM and AI product artifacts
+│   ├── research/
 │   ├── architecture/
 │   └── roadmap/
+├── eval/           # AI Copilot eval harness (see docs/product/Eval-Harness-Results.md)
 └── package.json
 ```
 
@@ -100,6 +102,17 @@ Production build:
 npm run build
 ```
 
+## AI Copilot Eval Harness
+
+The Copilot Demo's response logic is checked against a labeled eval dataset, using the same matching code the UI runs:
+
+```bash
+node eval/run-eval.mjs              # evaluate the current knowledge base
+node eval/run-eval.mjs --kb=legacy  # evaluate the pre-fix knowledge base (see results doc)
+```
+
+See [Eval Harness Results](docs/product/Eval-Harness-Results.md) for the dataset, methodology, and a real gap this harness found and fixed (a missing crisis-resource guardrail).
+
 ## API Endpoints
 
 ```text
@@ -115,10 +128,13 @@ GET /api/ai-product-strategy
 
 ## Key Docs
 
+- [Portfolio Story](docs/product/Portfolio-Story.md)
 - [Customer Discovery](docs/research/Customer-Discovery.md)
 - [AI PM Portfolio Case Study](docs/product/AI-PM-Portfolio-Case-Study.md)
+- [Key Decisions and Tradeoffs](docs/product/Key-Decisions-And-Tradeoffs.md)
 - [AI Product Strategy](docs/product/AI-Product-Strategy.md)
 - [AI Evaluation Plan](docs/product/AI-Evaluation-Plan.md)
+- [Eval Harness Results](docs/product/Eval-Harness-Results.md)
 - [Experiment Backlog](docs/product/Experiment-Backlog.md)
 - [User Journeys](docs/product/User-Journeys.md)
 - [GTM Launch Plan](docs/product/GTM-Launch-Plan.md)

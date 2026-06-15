@@ -40,6 +40,8 @@ The differentiation is not "AI for campus" by itself. The differentiation is the
 - Metrics framework
 - AI product strategy
 - AI evaluation plan
+- Runnable AI eval harness with before/after results
+- Key decisions and tradeoffs
 - Experiment backlog
 - GTM launch plan
 - Architecture document

@@ -19,6 +19,7 @@ import {
   CreditCard,
   FlaskConical,
   GraduationCap,
+  HeartPulse,
   LayoutDashboard,
   Library,
   MessageSquareText,
@@ -36,6 +37,11 @@ import {
   WalletCards
 } from "lucide-react";
 import "./styles.css";
+import {
+  COPILOT_SUGGESTED_PROMPTS,
+  copilotTicketId,
+  matchCopilotResponse
+} from "./copilotKnowledgeBase.js";
 
 const isLocalHost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
 const API_URL = isLocalHost ? `${window.location.protocol}//${window.location.hostname}:4000/api/overview` : null;
@@ -364,68 +370,10 @@ const navItems = [
   { id: "roadmap", label: "Roadmap", icon: ClipboardList }
 ];
 
-// Canned knowledge base for the interactive Copilot demo. This is a scripted
-// stand-in for the RAG + guardrails design in docs/architecture/System-Architecture.md:
-// confident answers carry a source citation, low-confidence answers are
-// visibly escalated to a human department with a generated ticket id.
-const COPILOT_RESPONSES = [
-  {
-    keywords: ["library", "fine", "fines", "overdue"],
-    answer:
-      "You can view and pay library fines under My Account -> Fines & Fees. Overdue items accrue $0.25/day, capped at $15 per item.",
-    source: "Library Services Knowledge Base",
-    confidence: 96
-  },
-  {
-    keywords: ["financial aid", "disburse", "disbursement", "aid"],
-    answer:
-      "Financial aid for the Fall term disburses 10 days before classes start, as long as all verification documents are submitted by August 1.",
-    source: "Registrar Academic Calendar",
-    confidence: 94
-  },
-  {
-    keywords: ["student id", "id card", "replace", "lost id"],
-    answer:
-      "Replacement student IDs are issued at Campus ID Services (Student Union, Room 102) for a $15 fee. Bring a government-issued photo ID.",
-    source: "Campus ID Services Guide",
-    confidence: 91
-  },
-  {
-    keywords: ["drop", "add/drop", "deadline", "withdraw"],
-    answer:
-      "Late add/drop requests after the published deadline require instructor and department approval, and the policy varies by course and college.",
-    source: null,
-    confidence: 58,
-    escalateTo: "Registrar's Office - Academic Petitions"
-  }
-];
-
-const COPILOT_FALLBACK_RESPONSE = {
-  answer:
-    "I don't have verified campus information on that yet. I've routed this to a team member who can help.",
-  source: null,
-  confidence: 42,
-  escalateTo: "General Student Services"
-};
-
-const COPILOT_SUGGESTED_PROMPTS = [
-  "How do I check my library fines?",
-  "When does financial aid disburse this semester?",
-  "I missed the add/drop deadline - what are my options?",
-  "Where do I replace a lost student ID?"
-];
-
-function matchCopilotResponse(query) {
-  const normalized = query.toLowerCase();
-  const hit = COPILOT_RESPONSES.find((entry) =>
-    entry.keywords.some((keyword) => normalized.includes(keyword))
-  );
-  return hit ?? COPILOT_FALLBACK_RESPONSE;
-}
-
-function copilotTicketId() {
-  return `CMP-${Math.floor(1000 + Math.random() * 9000)}`;
-}
+// The Copilot demo's knowledge base, matching logic, and suggested prompts
+// live in ./copilotKnowledgeBase.js so the eval harness (eval/run-eval.mjs)
+// tests the exact same logic this UI runs. See that file and
+// docs/product/Eval-Harness-Results.md for details.
 
 // Maturity stages map to a 4-step delivery pipeline so non-technical
 // reviewers can scan module progress at a glance.
@@ -1120,6 +1068,7 @@ function CopilotDemo() {
           source: match.source,
           confidence: match.confidence,
           escalateTo: match.escalateTo,
+          crisisResource: match.crisisResource,
           ticket: match.escalateTo ? copilotTicketId() : null
         }
       ]);
@@ -1143,6 +1092,11 @@ function CopilotDemo() {
               {message.source && (
                 <span className="citationChip">
                   <BookOpen size={12} /> Source: {message.source}
+                </span>
+              )}
+              {message.crisisResource && (
+                <span className="crisisChip">
+                  <HeartPulse size={12} /> {message.crisisResource}
                 </span>
               )}
               {message.escalateTo && (

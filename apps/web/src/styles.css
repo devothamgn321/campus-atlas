@@ -1409,7 +1409,8 @@ h1 {
 }
 
 .citationChip,
-.escalationChip {
+.escalationChip,
+.crisisChip {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -1431,6 +1432,14 @@ h1 {
   background: rgba(251, 191, 36, 0.12);
   color: var(--gold);
   border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.crisisChip {
+  background: rgba(251, 113, 133, 0.12);
+  color: var(--coral);
+  border: 1px solid rgba(251, 113, 133, 0.25);
+  white-space: normal;
+  line-height: 1.4;
 }
 
 .suggestedPrompts {

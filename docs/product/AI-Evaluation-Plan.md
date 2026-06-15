@@ -98,3 +98,7 @@ The AI copilot should not graduate from pilot to MVP until it meets:
 - 85% escalation precision
 - 4.3/5 student satisfaction
 - No unresolved critical safety incidents in the pilot window
+
+## Implementation Note
+
+A small runnable eval harness (`eval/run-eval.mjs`) checks the Copilot Demo's response-routing logic against a labeled dataset covering the slices above, including escalation correctness, citation correctness, and guardrail behavior for adversarial and crisis-language prompts. Running this harness during development surfaced a real guardrail gap (missing crisis resources for emergency/mental-health language) which was then fixed. See [Eval Harness Results](./Eval-Harness-Results.md) for the dataset, methodology, and results - and for what this harness does and does not cover relative to the full plan above.
