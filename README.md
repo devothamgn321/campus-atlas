@@ -1,120 +1,139 @@
-# CampusOS
+# Campus Atlas
 
-**AI Product Management Case Study — AI-Native Operating System for Higher Education**
+**AI Product Management Case Study — AI-Native Campus Operating System for Higher Education**
 
-CampusOS is an AI PM case study exploring how I would define, design, evaluate, and launch an AI-native campus operating system inside a real university environment. It demonstrates product strategy, RAG system design, evaluation frameworks, and go-to-market thinking — not just code.
+Campus Atlas is an AI PM case study exploring how I would define, design, evaluate, and launch an AI-native campus operating system. It demonstrates product strategy, AI system design, evaluation frameworks, and go-to-market thinking — grounded in a working prototype with a real eval harness.
 
-🔗 **[Live Demo →](https://campus-atlas-demo.vercel.app/)**
-📄 **[Product Strategy →](#product-strategy--pm-thinking)**
-🧠 **[AI Architecture →](#ai-architecture)**
-📊 **[Evaluation Framework →](#evaluation-framework)**
+🔗 **[Live Demo →](https://devothamgn321.github.io/campus-atlas/)**
+📄 **[Product Strategy →](docs/product/AI-Product-Strategy.md)**
+🧠 **[System Architecture →](docs/architecture/System-Architecture.md)**
+📊 **[Eval Harness Results →](docs/product/Eval-Harness-Results.md)**
+
+---
+
+## Origin
+
+Campus Atlas started as a final-year engineering project (Student Link) that digitized student records, library services, canteen workflows, and basic campus administration. Moving into product management, I revisited it through a product strategy lens. The original system solved isolated tasks. The larger opportunity was a unified digital operating system for higher education — connecting student identity, campus services, AI assistance, and administrative intelligence into a single platform.
+
+Campus Atlas is that reframed product: designed and documented the way I'd approach it as an AI Product Manager.
 
 ---
 
 ## The Problem
 
-Universities run on 15+ disconnected systems. Students waste hours navigating registrar portals, library sites, dining apps, housing request forms, and financial aid pages — each with its own login, its own interface, and its own support queue.
+University students depend on 10+ disconnected portals, offices, and manual processes for everyday campus tasks. This creates friction for students and repeated operational work for staff.
 
-**Fragmented access.** A student asking "How do I defer a course?" might need to visit the registrar site, the academic advising portal, and their department page — and still end up emailing a human.
+**Three compounding failures:**
 
-**Overwhelmed admin teams.** University staff receive thousands of repetitive support tickets every semester. Most could be resolved instantly if the right information were surfaced at the right moment.
+**Fragmented access.** A student asking "How do I defer a course?" might visit the registrar site, academic advising portal, and their department page — and still end up emailing a human.
 
-**No intelligence layer.** Existing campus apps don't learn, don't reason, and don't connect. A student moving from housing to dining to financial aid starts from zero every time.
+**Overwhelmed admin teams.** Staff receive thousands of repetitive support tickets each semester. Most could be resolved instantly if the right information surfaced at the right moment.
+
+**No intelligence layer.** Existing campus apps don't learn, don't reason, and don't connect. Students start from zero every time they switch between systems.
+
+**Result:** student frustration, admin burnout, and a university that looks less sophisticated than a consumer app — despite housing world-class knowledge in its documents and policies.
 
 ---
 
 ## Target Users
 
-| Persona | Role | Core Need | Pain |
-|---|---|---|---|
-| **Undergraduate Student** | Navigates university systems daily | Instant, trustworthy answers to "how do I...?" questions | Spends 20-40 min per task navigating 5+ portals |
-| **Graduate Student** | Complex admin needs (visa, stipends, research) | Accurate policy answers with citations | High stakes errors from misunderstood policies |
-| **University Admin Staff** | Handles student inquiries | Reduce repetitive ticket volume | ~60% of tickets are answerable from existing documents |
-| **Department Head / Registrar** | Accountable for student service quality | Visibility into what students are asking | No analytics on where students get stuck |
+| Persona | Core Need | Pain |
+|---|---|---|
+| **Undergraduate Student** | Instant, trustworthy answers to "how do I...?" questions | Spends 20–40 min per task navigating 5+ portals |
+| **Graduate Student** | Accurate policy answers with citations (visa, stipends, research) | High-stakes errors from outdated/misunderstood policies |
+| **University Admin Staff** | Reduce repetitive ticket volume | ~60% of tickets are answerable from existing documents |
+| **Department Head / Registrar** | Visibility into what students are asking and where systems fail | No analytics on where students get stuck |
 
 ---
 
-## The Product Solution
+## Product Solution
 
-CampusOS replaces the fragmented campus experience with a single AI-native command center. The core insight: **universities are not unintelligent — their intelligence is inaccessible.**
+Campus Atlas unifies the fragmented campus experience into a single AI-native platform. The core insight: **universities aren't unintelligent — their intelligence is inaccessible.** Every policy, deadline, and procedure is documented somewhere. Campus Atlas makes that knowledge retrievable through an AI copilot that understands university-specific context and responds with citations, not hallucinations.
 
-**MVP — AI Copilot**
-Student asks a question in natural language. Copilot retrieves the relevant passage from official university documents, generates a grounded answer with citations, and routes to a human when confidence is low.
+### Phased Scope
 
-**Phase 2 — Student Command Center**
-Unified dashboard: upcoming deadlines, pending tasks, personalized alerts across registrar, housing, dining, and library.
-
-**Phase 3 — Services Hub**
-Integrated service actions: course registration, dining plan changes, library holds, housing maintenance requests — all from a single interface.
-
-**Phase 4 — Admin Intelligence Layer**
-Analytics dashboard showing what students are asking, where the copilot escalates, and where the knowledge base has gaps.
+| Phase | Features | Goal |
+|---|---|---|
+| **MVP** | AI Campus Copilot — citation-based answers, confidence-gated escalation, eval harness | Registrar pilot: 90% groundedness, 80% escalation precision |
+| **Phase 2** | Student Command Center, Admin Intelligence Dashboard, multi-department corpus | 30% ticket deflection across 3+ departments |
+| **Phase 3** | Services Hub — course registration, housing requests, dining — all in one interface | Students complete tasks, not just get answers |
+| **Phase 4** | Multi-institution deployment, shared corpus tooling, policy benchmarking | 5+ institutions; corpus quality compounds |
 
 ---
 
 ## Core Product Features
 
-### 1. AI Copilot (RAG-Based)
-Students ask questions in natural language. The copilot retrieves relevant passages from official university documents, generates a grounded response, and surfaces the source so students can verify.
+### 1. AI Campus Copilot (Citation-Based)
+Students ask questions in natural language. The copilot retrieves relevant passages from official university documents and surfaces a grounded response with the source so students can verify.
 
-**PM decision:** Chose citation-first UX over conversational fluency. Students in high-stakes situations (financial aid, visa deadlines, course withdrawal) need to trust the answer, not just receive it. Showing the source passage builds trust and reduces the "but the chatbot told me" escalation problem.
+**PM decision:** Citation-first UX over conversational fluency. In high-stakes situations — financial aid, visa deadlines, course withdrawal — students need to *trust* the answer, not just receive it. Showing the source builds trust and eliminates the "but the chatbot told me" escalation problem.
 
 ### 2. Confidence-Gated Escalation
-When retrieval returns low-confidence results, the copilot does not hallucinate — it says "I'm not certain about this, here's who to contact" and routes to the appropriate office.
+When retrieval confidence is low, the copilot doesn't guess — it says "I'm not certain, here's who to contact" and routes to the appropriate office with the student's query and retrieved context attached.
 
-**PM decision:** Escalation over hallucination is a non-negotiable product principle. A confident wrong answer in an educational context has real consequences for students. The system earns trust by knowing its limits.
+**PM decision:** Escalation over hallucination is a non-negotiable product principle. A confident wrong answer in an institutional context (wrong deadline, wrong requirement) has real consequences. The system earns trust by knowing its limits.
 
-### 3. Groundedness Evaluation
-Every copilot response is scored against the source passages for factual grounding. Responses are flagged if they contain claims not supported by the retrieved context.
+### 3. Offline Eval Harness (Shipped)
+A runnable eval harness (`eval/run-eval.mjs`) tests the copilot's response logic against a labeled dataset. It checks whether the system makes the right call — answer with citation vs. escalate vs. surface crisis resources — for each query class defined in the AI Evaluation Plan.
 
-**PM decision:** Built evaluation into the product loop, not as an afterthought. Without groundedness scoring, there is no way to know if the model is drifting from policy.
+**PM decision:** Built evaluation into the product loop before launch, not as an afterthought. The harness tests the exact same `copilotKnowledgeBase.js` logic the UI runs — not a copy that can drift out of sync.
 
-### 4. Escalation Queue (Human-in-the-Loop)
-Low-confidence queries route to a structured escalation queue visible to admin staff. Each escalation includes the student question, the retrieved context, and the confidence score — so staff can respond faster with full context.
+### 4. Admin Intelligence Dashboard (Phase 2)
+Shows query volume by topic, escalation rates by department, most-queried documents, and knowledge gaps (high-volume queries with low-confidence results). Turns the copilot into a continuous audit of where university information systems are failing students.
 
-**PM decision:** Designed the escalation interface for the admin, not just the student. If staff can see what the AI tried to do and why it gave up, their response is faster and the interaction log improves the model.
+**PM decision:** Designed the admin view as a product in its own right, not a side panel. If admin teams can see what the AI is doing and where it's failing, they become advocates for the platform — not just passive recipients of a chatbot.
 
-### 5. Admin Analytics Dashboard (Phase 2)
-Shows query volume by topic, escalation rates by department, most-retrieved documents, and knowledge gaps. Turns the copilot into a continuous audit of where university systems are failing students.
+### 5. Student Command Center (Phase 2)
+Unified dashboard: upcoming deadlines, pending tasks, personalized alerts across registrar, housing, dining, and library. One login. One view.
 
 ---
 
-## AI Architecture
+## System Architecture
+
+### Current Prototype
 
 ```
-Student Query (Natural Language)
-        |
-        v
-Query Processing
-  Intent classification + entity extraction
-        |
-        v
-Vector Retrieval (RAG)
-  Semantic search over university document embeddings
-  Top-K relevant passages + confidence scores
-        |
-        v
-Threshold Router
-  High confidence  → LLM synthesis
-  Low confidence   → Escalation queue
-        |
-        v
-Response Generation
-  LLM synthesizes grounded answer with citation
-  Groundedness score computed
-        |
-        v
-Human Review (HITL)
-  Admin sees: question + context + confidence + escalation reason
-  Decision logged → corpus improvement feedback loop
+Student / Faculty / Admin
+        │
+        ▼
+Campus Atlas Web App (React + Vite)
+        │
+        ▼
+Express API (apps/api/src/server.js)
+        │
+        ├── Mock platform data (modules, metrics, student profile)
+        ├── AI Copilot logic (copilotKnowledgeBase.js)
+        └── Eval harness (eval/run-eval.mjs)
+```
+
+### Future-State Architecture
+
+```
+Student / Faculty / Admin
+        │
+        ▼
+Campus Atlas Web + Mobile App
+        │
+        ▼
+API Gateway
+        │
+        ├── Identity & Access Service
+        ├── Student Profile Service
+        ├── Campus Services Service
+        ├── AI Copilot Service ──► Vector Retrieval → LLM → Groundedness Check
+        ├── AI Evaluation Service
+        ├── Analytics Service
+        └── Digital Credentials Service
+        │
+        ▼
+Data Layer (PostgreSQL + Vector Store)
 ```
 
 **Key AI product decisions:**
-
-- **University-specific corpus over general knowledge** — LLMs know how universities generally work. CampusOS needs to know how this university works. Institution-specific RAG is the product moat.
-- **Citations are a UX requirement, not a technical nicety** — In an institutional context, every answer shows its source.
-- **Confidence threshold is a product policy decision** — The right threshold is a risk tolerance decision made by the university, not a hardcoded model constant.
-- **Escalation logs as training data** — Every human resolution is a high-quality labeled example for improving the pipeline.
+- **Institution-specific corpus over general knowledge** — LLMs know how universities generally work. Campus Atlas needs to know how *this* university works. Retrieval over institution-specific documents is the product moat.
+- **Citations are a UX requirement, not a technical nicety** — In an institutional context, "trust me" is not good enough. Every answer shows its source.
+- **Confidence threshold is a product policy decision** — The right threshold is a risk tolerance decision made by the university, not a hardcoded model hyperparameter.
+- **Escalation logs as training data** — Every human resolution is a labeled example for improving retrieval and generation. Designed the escalation flow to capture this systematically.
 
 ---
 
@@ -122,33 +141,32 @@ Human Review (HITL)
 
 ### Problem Framing
 
-The insight that shaped the MVP: **the problem is not that universities lack information — it is that students cannot retrieve it.** The product is not content creation; it is intelligent retrieval.
+The insight that shaped the MVP: **the problem isn't that universities lack information — it's that students can't retrieve it.** Every answer the copilot gives already exists in a policy document, registrar FAQ, or department page. The product is not content creation; it's intelligent retrieval.
 
 ### Customer Wedge
 
-Start with the **Registrar** as the institutional buyer. They own the most-queried information, have the clearest ticket volume problem, and feel the most pain when students get wrong answers.
+Start with the **Registrar** as the institutional buyer. They own the most-queried information, have the clearest ticket volume problem, and feel the most pain when students get wrong answers. A pilot that reduces repetitive email volume by 30% is a story that travels to other departments.
 
 ### Prioritization
 
 | Feature | Priority | Rationale |
 |---|---|---|
-| RAG Copilot (core) | P0 | The product without this is a website |
-| Citation UI | P0 | Without citations, institutional trust fails |
+| AI Copilot (citation-based) | P0 | The product without this is a website |
 | Confidence-gated escalation | P0 | Without this, hallucinations damage trust |
-| Groundedness eval | P0 | Without this, we cannot know if the product is working |
+| Offline eval harness | P0 | Without this, we can't know if the product is working |
 | Admin escalation queue | P1 | Needed for HITL loop and staff adoption |
-| Student Command Center | P2 | High value but dependent on copilot trust |
-| Services Hub | P3 | Requires deep API integrations |
+| Student Command Center | P2 | Dependent on copilot trust being established first |
+| Services Hub (action layer) | P3 | Requires deep API integrations with campus systems |
 
-### Go-To-Market
+### GTM Strategy
 
-**Target buyer:** VP of Student Affairs or VP of Enrollment Management.
+**Beachhead:** Registrar + student-service support. High frequency, clear operational pain, measurable ticket reduction, strong expansion path.
 
-**Pilot structure:** Single university, one department (Registrar), 90-day pilot. Success criteria defined upfront with the buyer.
+**Pilot structure:** Single university, one department, 8-week pilot. Success criteria defined upfront: 20% fewer manual tickets, 4.3/5 student satisfaction.
 
-**Expansion motion:** Registrar success → Housing, Financial Aid, Library. Same platform, new corpus per department.
+**Expansion motion:** Registrar success → warm introduction to Housing, Financial Aid, Library. Same platform, new knowledge corpus per department.
 
-**Pricing:** Per-institution SaaS, tiered by enrollment size. Annual contract.
+See full GTM plan: [docs/product/GTM-Launch-Plan.md](docs/product/GTM-Launch-Plan.md)
 
 ---
 
@@ -156,29 +174,48 @@ Start with the **Registrar** as the institutional buyer. They own the most-queri
 
 ### Why evaluation is a PM responsibility
 
-In a university context, a wrong answer has real consequences — a student misses a deadline, files the wrong form, violates their visa status. The PM must own the definition of "good enough" before launch.
+Most AI products treat evaluation as an ML problem. In a university context, a wrong answer has real consequences — a student misses a deadline, files the wrong form, violates their visa status. The PM must own the definition of "good enough" before launch.
 
 ### Metrics
 
 | Metric | Target | Why It Matters |
 |---|---|---|
-| **Groundedness Rate** | >= 90% | Responses must be traceable to source documents |
-| **Escalation Precision** | >= 80% | Escalations should be genuinely ambiguous |
-| **Ticket Deflection Rate** | >= 30% in 90-day pilot | Primary business outcome for institutional buyer |
-| **Student Resolution Time** | < 60 seconds | vs. current avg 2+ days for email responses |
+| **Groundedness Rate** | ≥ 90% | Responses must be traceable to source documents |
+| **Escalation Precision** | ≥ 80% | Escalations should be genuinely ambiguous, not false negatives |
+| **Ticket Deflection Rate** | ≥ 20% in 8-week pilot | Primary business outcome for institutional buyer |
+| **Student Satisfaction** | ≥ 4.3 / 5.0 | Trust signal alongside deflection |
 | **False Confidence Rate** | < 5% | High-confidence answers that are factually wrong |
-| **Corpus Coverage** | > 85% of top-100 queries | Before launch; measure weekly after |
+| **Corpus Coverage** | > 85% of top-100 queries answerable | Measured before launch, tracked weekly after |
+
+### Eval Harness (Shipped)
+
+The harness (`eval/run-eval.mjs`) tests the copilot's response logic against `eval/eval-dataset.json` — a labeled set covering all query classes: answered with citation, escalated, crisis resource surfaced.
+
+See results: [docs/product/Eval-Harness-Results.md](docs/product/Eval-Harness-Results.md)
+
+### Experiment Backlog
+
+Three experiments queued for pilot phase:
+1. **Copilot First-Contact Resolution** — Hypothesis: cited answers + one-click workflow actions reduce registrar tickets 20% in 4 weeks
+2. **Credential QR Verification** — Hypothesis: secure QR certificates reduce manual verification from days to minutes
+3. **Admin Adoption Dashboard** — Hypothesis: bottleneck visibility drives admin weekly active usage above 60%
+
+Full backlog: [docs/product/Experiment-Backlog.md](docs/product/Experiment-Backlog.md)
 
 ---
 
-## Roadmap
+## Key Decisions & Tradeoffs
 
-| Phase | Features | Success Criteria |
-|---|---|---|
-| **MVP** | RAG Copilot, citation UI, escalation, groundedness eval | 90% groundedness; working pilot at 1 department |
-| **Phase 2** | Student Command Center, multi-department corpus, admin analytics | 30% ticket deflection; 3+ departments live |
-| **Phase 3** | Services Hub, API integrations with campus systems | Students can complete tasks, not just get answers |
-| **Phase 4** | Multi-institution deployment, shared corpus tooling | 5+ institutions |
+**Wedge: AI copilot + admin intelligence, not "digitize everything first"**
+Chose the copilot as the wedge over leading with Digital Student Identity (credential verification), which has a cleaner deterministic value prop but less immediate adoption leverage.
+
+**Scripted copilot in prototype, not a connected LLM**
+The current demo uses a scripted knowledge base as a stand-in for the full RAG pipeline. This lets the eval harness test the *decision logic* (answer vs. escalate vs. crisis) without the cost and latency of a live LLM — while keeping the architecture designed for the real thing.
+
+**Single institution pilot over broad rollout**
+One department, one university, defined success criteria upfront. Avoids the trap of shipping to 10 universities and learning nothing from any of them.
+
+Full decisions doc: [docs/product/Key-Decisions-And-Tradeoffs.md](docs/product/Key-Decisions-And-Tradeoffs.md)
 
 ---
 
@@ -187,13 +224,43 @@ In a university context, a wrong answer has real consequences — a student miss
 | Layer | Technology |
 |---|---|
 | Frontend | React 18, Vite |
-| Styling | Tailwind CSS, shadcn/ui |
-| RAG Pipeline | LangChain / LlamaIndex |
-| Vector Store | Pinecone / ChromaDB |
-| LLM | OpenAI GPT-4o (structured output) |
-| Document Ingestion | PyPDF2, Unstructured.io |
-| Eval Framework | RAGAS (groundedness, answer relevance, context precision) |
-| Hosting | Vercel (frontend) + Railway (backend) |
+| Styling | CSS (custom) |
+| Backend API | Express.js (Node) |
+| Copilot Logic | Scripted knowledge base (stand-in for RAG pipeline) |
+| Eval Harness | Node.js (`eval/run-eval.mjs`) |
+| Hosting | GitHub Pages (via `.github/workflows/pages.yml`) |
+
+---
+
+## Repository Structure
+
+```
+campus-atlas/
+├── apps/
+│   ├── api/
+│   │   └── src/server.js           # Express API + mock platform data
+│   └── web/
+│       ├── index.html
+│       └── src/
+│           ├── main.jsx             # React app entry
+│           ├── copilotKnowledgeBase.js  # Copilot response logic + eval source
+│           └── styles.css
+├── docs/
+│   ├── architecture/
+│   │   └── System-Architecture.md
+│   ├── assets/screenshots/          # Admin intelligence, command center, copilot demo
+│   └── product/
+│       ├── PRD.md
+│       ├── AI-Product-Strategy.md
+│       ├── AI-Evaluation-Plan.md
+│       ├── Eval-Harness-Results.md
+│       ├── Experiment-Backlog.md
+│       ├── GTM-Launch-Plan.md
+│       ├── Key-Decisions-And-Tradeoffs.md
+│       ├── Metrics.md
+│       └── Portfolio-Story.md
+└── .github/workflows/pages.yml     # GitHub Pages deployment
+```
 
 ---
 
@@ -202,28 +269,27 @@ In a university context, a wrong answer has real consequences — a student miss
 ```bash
 git clone https://github.com/devothamgn321/campus-atlas.git
 cd campus-atlas
-npm install
-npm run dev
-```
 
-Backend (RAG pipeline):
-```bash
-cd backend
-pip install -r requirements.txt
-python ingest.py
-python app.py
+# Install dependencies
+npm install
+
+# Start web app (Vite dev server)
+cd apps/web && npm run dev
+
+# Start API server
+cd apps/api && node src/server.js
 ```
 
 ---
 
 ## About
 
-**Devothama GN (Ruby)**
-AI Product Manager | Platform Products | JHU Engineering Management
+**Devothama GN**
+AI Product Manager | Platform Products | MS Engineering Management @ Johns Hopkins
 Ex-Mercedes-Benz ADAS | TEDxJHU Speaker
 
 [Portfolio](https://devothamagn.netlify.app) · [LinkedIn](https://linkedin.com/in/devothamagn) · [GitHub](https://github.com/devothamgn321)
 
 ---
 
-*CampusOS is an AI Product Management case study for a higher-education operating system, showing how I would define, design, evaluate, and launch an AI-native product inside a real university environment.*
+*Campus Atlas is an AI Product Management case study for a higher-education operating system — demonstrating how I would define, design, evaluate, and launch an AI-native product inside a real university environment.*
